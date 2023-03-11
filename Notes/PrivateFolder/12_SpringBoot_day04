@@ -1,0 +1,100 @@
+Spring Boot
+
+Why Spring Boot?
+    - Building a Spring application is difficult. Why?
+      We need to be able to get start:
+        - Which Maven archetype (structure) to use?
+        - What dependencies to choose?
+        - How to set up configuration (xml, java)?
+        - How to install server? - Java doesn't understand UI, we need translator and server translates. Server needs to be installed and its painful
+   A lot of configuration and very easy to make mistake and that's why they come up with the solution of Spring Boot.
+
+Spring Boot
+    - The most popular Java framework in the market.
+    - It is an open-source (free of charge and most companies prefer) extension of the Spring Framework designed to simplify the Spring application development.
+    - It allows developers o focus on the business logic rather than spending time on the technical code and the associated configurations.
+    - Its moto is Convention-over-configuration solution.
+
+Why agile is so popular?
+    agile methodology is a popular approach to software development because it promotes collaboration,
+    flexibility, and customer satisfaction, while allowing teams to deliver high-quality software quickly and continuously.
+
+4. Spring Boot Core Features:
+    = Fast Bootstrapping (Bootstrapping is starting something )
+    = Auto-configuration - Spring Boot automatically configures the minimum components of a Spring application. Spring checks
+                           dependencies and makes beans for you.
+    = Opinionated - it provides a set of starter dependencies. e.g if we want to build a web application, we can configure the
+                    spring-boot-starter-web dependency which ensures that all related dependencies to develop a web application
+                    are in the application classpath.
+    = Standalone - All applications should run in server, because server translates everything from java codes to Htpl.
+                    Spring boot provides solution and server is already included, it's coming as embedded (attached/implanted).
+
+
+5. CydeoApp.jar = this is file we need to deploy (set in action) the application and everything is done behind the scene
+                  (connected to the server, accepting all dependencies);
+                   Server name Tomcat
+
+6. Spring Boot Components
+    - each component focuses on a specific area of the application development:
+        = CJI
+        = DevTools
+        = Test
+        =Starter
+        =Loader and etc
+
+7. Steps how to generate Spring Boot
+   1. spring initializr (start.spring.lo)
+   2. Choose Project type = Maven or Gradie Project
+   3. Choose Language type = Java, Katlin, Groovy
+   4. Choose Spring Boot version - use always fixed number version, not Snapshot - it means trial;
+   5. Pick up packaging - Jar (standalone application including server) or War (different server).
+   6. Choose Java version, no less then Java 8.
+   7. Add Dependencies - Fundamental dependencies are included behind the scene, no need to pick anything (e.g Spring context dependency)
+
+8 Spring Boot Structure:
+    - src/main/java: Contains application source code
+    - src/main/resources: Contains non-java resources (e.g html file, images etc.)
+    - src/test/java: Contains test code (unit testing and integration testing are our job)
+
+     - mvnw and mvnw.cmd - These are maven wrapper scripts. you can use these scripts to build your project, even if you do not have Maven installed
+                        on your machine.
+
+     - pom.xml : This is the Maven build specification;
+     - cydeoApplication.java: This is the spring boot main class that bootstraps the project.
+     - application.properties :This file initially empty, but offers a place where you can specify configuration properties
+                                (external data, eg. username/password).
+
+     - resources/static: Contains any static content (images, css, java script, etc)
+     - resources/templates : Contains template file that will be used to render content to the browser (Thymeleaf)
+     - CydeoApplicationTest: This is a simple test class that ensures that the Spring application context loads successfully.
+
+9. Build Spring Specification:
+    <parent></parent>  - parent/child relationship in Maven, it means that your project has spring-boot-starter-parent as its parent POM.
+                          This parent POM provides dependency management for several libraries commonly used in Spring projects. For those
+                          libraries covered by the parent POM, you want have to specify a version, because it is inherited from the parent.
+
+    - All dependencies have the work starter in their artifact ID.
+    - Your build file will be significantly smaller and easier to manage because you won't need to declare a dependency on every library you might need.
+    - You are able to think of your dependencies in terms of what capabilities they provide, rather than their library names (web starter dependency).
+
+10. Spring Boot Plugin:
+    - It provides a Maven goal that enables you to run the application using maven
+    - It ensures that all dependency libraries are included within the executable JAR
+
+11. Bootstrapping the application (it means starter)
+    - @SpringBootApplication: is a composite annotation that combines the following annotations:
+        1. @SpringBootConfiguration: Designates this class a configuration class, basically our configuration class is created already.
+                                     You can add Java based Spring Framework configuration to this class if you need to. This annotation is a specialized form
+                                     of the @Configuration annotation.
+        2. @EnableAutoConfiguration: It enables Spring Boot automatic configuration. It tells Spring Boot to automatically configure
+                                     any components that it thinks you will need.
+        3. @ComponentScan: Enables component scanning.
+
+12. main () method: calls  a static run method on SpringApplication class, which performs the actual bootstrapping of the application, creating the Spring
+                     Application context. The 2 parameters passed to run() method are a configuration class, and the command line arguments.
+
+13. Configuration properties =  Whatever we try to bring from outside, externally. Don't mix with standard configuration class.
+    13.1 Steps:
+        - define prefix.key = value;
+        - create configuration class, put field we are trying to bring from properties.
+        - whenever you want to use that data, we need to inject in that class. We inject through the constructor.

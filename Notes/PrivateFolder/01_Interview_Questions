@@ -1,0 +1,599 @@
+1. Difference between method and constructor?
+    - Constructor should have class name; method can have any name;
+    - Method can return value; Constructor can not;
+    - We call method with the method name; But we call constructor with "new" key word;
+    - A constructor is used to initialize the variables of a Class; A method is used to define the
+                                                                    behavior/functionalities of an object
+    - Java compiler provides a default constructor; There is no existence of default method.
+
+2. Stream  = Flowing something;
+
+3. Behavior Parameterization
+   - is the ability of a method to receive multiple different behavior as
+     its parameter and use them internally to accomplish the task.
+
+4. Why is Java so popular?
+ - Open Source
+    - It is open source, which implies that it it free to use, Any developer with a working knowledge
+      of Java can use this free platform to create apps.
+ - Built in security
+    - It includes high level concurrency tools and packages also take care of security.
+ - Strong Community
+    - The main reason for Java's popularity is its active and supportive community.
+      So, if we ever get trapped in programming, other programmers or the Java community can
+      help assist us and solve a problem.
+ - Excellent Documentation
+    - Its documentation is well-defined and provides complete guide to help and solve any problems.
+ - Powerful set of Programming Tools
+    - IDE (Integrated Development Environment) is one of Java's most important feature.
+      The Java IDE provides a comprehensive editors, debuggers, and collection of automation tools;
+    - The three most popular Java IDEs are Eclipse, IntelliJ IDEA, and NetBeans
+    - In terms of tools, Java provides Maven for developing Java applications.
+    - JConsole and Visual VM work for monitoring Heap utilization
+    - Jenkins use for Continuous Integration and Delivery in Java.
+
+5. What are different kind of variables defined in Java?
+    - Variable is a container to store a data value. In other words a variable
+      is a memory location name for any data.
+    - There are 3 kind of variables in Java:
+          = Local Variable
+                   = Local variables are declared in a blocks, methods, or constructors.
+                   = Local variables are created when the block, method, or constructors is started and will be
+                     destroyed once it exits the block, method or constructor.
+          = Class (Static) Variable
+                   = It is declared with the "static" keyword in a class.
+                   = A single copy of each static variable is shared by all instances of the class.
+                   = Static variables are stored in static memory.
+                   = Default values of Static variables:
+                             = 0 for numbers;
+                             = false/true for boolean;
+                             = null for object;
+                   = Static variables can be accessed by calling with the class name;
+                   = Static variables are initialized only one time.
+                   = This variables will be initialized first, before the initialization of any instance variables.
+          = Instance Variable
+                   = Instance variable are declared outside a method. They are declared in a class.
+                   = When object is created the instance variables are created and when object destroyed
+                     instance variable is also destroyed.
+                   = For instance variables access modifiers can be given.
+                   = Instance variables are visible for all methods, constructors, and blocks in the class.
+                   = Default values of Instance variables:
+                            = 0 for numbers;
+                            = false/true for boolean;
+                            = null for object;
+          = (and Parameter can be also treated as local variable);
+
+6. What is class?
+    - A class is a Template, blueprint of an object. A class defines the state and
+       behavior that an object can exhibit.
+
+6. What is object?
+    - Object is state, behavior of class;
+    - Objects are the instance variables of class.
+    - Objects are stored through references.
+    - Objects are created with new key word.
+    - Every object has its own memory.
+
+
+7. What is state and behavior of an object?
+   - Each object has state, behavior and identity.
+   - State of an object is stored in field (variables), while methods (functions) display the object's behavior.
+   - e.g Cat's state includes its color, size, gender, age, while its behavior is sleeping, purring, meowing for food.
+   - The identity is a characteristic used to uniquely identify that object
+            = such a random ID number, or an address in memory, ID etc.
+
+8. What is OOP (Object Oriented Programming)?
+   - OOP is methodology or paradigm to design a program using classes and objects.
+   - OOP is a way of writing computer programs using "objects" to stand for data and methods.
+
+9. What are the key principles of OOP?
+    - Inheritance
+    - Encapsulation
+    - Polymorphism
+    - Abstraction
+
+10. What do JVM, JRE and JDK stand for?
+                ---------------------------------------
+
+11. How do you swap two numbers?
+    - Let say we have two variables x=10, y=20;
+    - We can swap this numbers by two different ways:
+       1) By Declaring temporary variable
+
+       public class Example {
+           public static void main(String[] args) {
+               int a = 10;
+               int b = 20;
+               int temp;
+
+               temp = a;
+               a = b;
+               b = temp;
+
+               System.out.println("After swapping:" a +""+ b);
+           }
+       }
+       2) By using arithmetic operators
+
+       public class Example {
+           public static void main(String[] args) {
+               int a = 10;
+               int b = 20;
+
+               a = a + b;
+               b = a - b;
+               a = a - b;
+
+           System.out.println("After swapping:" a +""+ b);
+           }
+       }
+
+12. Difference Between Array and ArrayList?
+    Array:
+      - Size Fixed;
+      - Dimension Single or Multi
+      - Data Type - Primitive or non-primitive
+      - Speed - Fast
+      - Is a object - Yes
+
+    ArrayList:
+      - Size Flexible
+      - Dimension - Single
+      - Dta Type - Only non-primitive
+      - Speed - Slower comparing to Array
+      - Is an object - Yes
+
+13. What is String in Java?
+    - String is defined as a Class in Java and this class is in java.lang package. It's not a primitive data type like int or double.
+    - String class represents sequence of characters
+    - there are two ways to create String Object: 1) New Keyword and 2) String literal, in other word we can use assign operator and double quotes.
+    - Heap memory also contains string pool. String pool collects String objects which are defined literally.
+    - String is immutable, synchronized and thread safe;
+    - String class has final keyword and Strings cannot be inherited.
+
+14. What is the difference between stack and heap memory?
+    - Stack contains - primitive values, methods, local variables, and reference variables
+    - Heap is a section of memory which contains Objects and Instance variables.
+      Heap memory also contains String pool.
+
+14. Could you explain static vs non-static in Java?
+    - Static:
+        - Static is a keyword in Java, it's considered a non-access modifier and can be used with variables or methods.
+        - Static members (methods and variables) belong to the class, which means, there will only be one copy of it and will be shared among
+          all the instances of that class.
+        - To access static members we don't need to create object, we can just use the name of the class.variable/method.
+        - Static CAN NOT be overridden but can be overloaded.
+      - Non-Static:
+        - Non-Static members belong to the instance of the class, so for each object created there will be a copy of them.
+        - In order to access a non-static member, we need to first create an object of that class, and then use the object reference
+          to make a call upon the method or variable.
+        - Can be override and overloaded, both of them.
+
+15. Could you explain method overloading?
+   Method Overloading:
+        1. Multiple methods that have the same name;
+        2. It is performed within class or sub-class;
+        3. Parameters must be different;
+        4. Access specifier doesn't matter;
+        5. Return Time of method doesn't matter, it can be same or different;
+        6. All methods included private and final can be overloaded;
+        7. Static method can be overloaded;
+        8. Abstract method can be overloaded;
+
+16. Could you explain method overriding?
+    Method Overriding:
+        1. One method with different implementation;
+        2. It occurs in two classes that have IS-A relationship;
+        3. Parameters must be same;
+        4. Access specifier must be same or more visible than original method;
+        5. Return type must be same (for primitive and void) or covariant (for object) in method overriding;
+        6. private and final methods cannot be overridden;
+        7. A static method cannot be overridden but can be hidden by defining a static method with same name and
+           parameters in child class.
+        8. Abstract method should be overridden;
+
+
+18. What is primitive type casting?
+    - Primitive casting is used to convert primitive values from one data type to another.
+    - Casing can be implicit or explicit:
+        1)Implicit Casting - when conversion happens automatically, by compiler, without writing specific code to do the conversion.
+          Implicit Casting happens when you assign smaller value to a larger data type
+        2) Explicit Casting - In explicit casting code must be specifically written. When we try to cast big data type into small one.
+
+19. WildCard?
+    - WildCard using as method parameter: public static void printList(List<?> list) - method can accept list of any type (?)
+    - Using a wildcard in a generic type parameter -List<?> list = new ArrayList<String>(); - (?) is used as a generic type parameter to
+      indicate that the type of the list is unknown.
+
+20. Anonymous class = Without providing class type giving a implementation;
+
+21. what is the difference between flatMap() vs map()?
+    - map () takes Stream <T> as input and returns Stream <R>;
+    - map () is mapper function produces single values for each input value.
+      It is called One-To-One mapping. In one data it will do one action and return that data, one by one.
+      e.g Stream.of (1, 2, 3, 4) returns [1, 2, 3, 4]
+
+    -flatMap() takes Stream<Stream<T>> (takes Stream of Stream) as an input and return Stream <R>.
+     It is called One-To-Many mapping
+     e.g [[1, 2],[3,4,] [4,5],[6,7], [8,9]] returns [1,2, 3, 4, 5, 6, 7, 8, 9] flatMap()
+
+22. What is double column operator?
+    - We use double column operator when we call method() directly.
+    -e.g System.out::println
+
+23. What is the different findAny() and findFirst() (Stream methods)?
+    - findFirst() method always gives you first matching one. It will be always same despite the fact how many times we run program.
+    - findAny () method gives you any random matching one. It might change each time we run program.
+
+24. What can be the difference between takeWhile() and limit() methods?
+    - takeWhile() method limiting based on the condition (Predicate; eg. less then 500, less then 200 etc);
+    - limit() does not accept condition and only limits based on the value (eg. limit 1, limit 2);
+
+25. What is the difference between dropWhile() and skip()?
+    - dropWhile() skipping based on the condition(); skip() method skips based on the value you provide(e.g skip 1, skip 2)
+
+26. What is Encapsulation?
+    - Encapsulation, along with abstraction, polymorphism and inheritance, is one of the four key concepts in
+      object oriented programming (OOP).Encapsulation is data hiding. We use private access modifier to protect data from
+      accessing and from modification without permission. To access encapsulated data we use getter() and setter() methods;
+    - We can set restrictions using setter method
+
+27. What is inheritance?
+    inheritance, along with encapsulation, abstraction and polymorphism is one of the four key concepts in
+    object oriented programming. Inheritance is Is A relationship between classes. We have parent/child classes;
+    We use "extend" keyWord to inherit one class to another; Extended class is super class.
+
+28. What are inheritance types?
+    - MultiLevel Inheritance = Parent -> child -> grandChild
+    - Hierarchical Inheritance =  Parent -> child - > child
+    - Single Inheritance = Parent -> child;
+
+29. Why do we use inheritance?
+    - The most important use of inheritance in Java is code re-usability.
+      The code that is present in the parent class can be directly used
+      by the child class. Method overriding is also known as runtime polymorphism.
+
+30. What is abstraction?
+    - Abstraction is one of the key concept of OPP.
+      It is process of hiding implementation details from the user; Only the functionality is provided;
+      User will have information what the object does, instead of how it does.
+
+31. What is abstract class?
+    - Abstract class meant to be a parent class. Goal is to provide reusable variables and methods
+    - Abstract keyword is used to create abstract class
+    - An abstract class can not be instantiated;
+    - We can not call any methods from abstract class;
+    - We can not create object of abstract class;
+
+32. What are the differences between Abstract Classes and Interface?
+        = Interface - Can only have final static variables. Interface can never change its own state;
+        = Abstract class - can have any static or instance variables, mutable or immutable;
+        = A class can implement multiple interfaces;
+        = A class can extend only one abstract class
+        = Interface Can be implemented with the implements keyword. An interface can also extend interfaces.
+        = Abstract class Can only be extended.
+        = Only functional interfaces can use the lambda feature in Java.
+        = Abstract classes with only one abstract method cannot use lambdas.
+        = Interface Can't have constructor.
+        = Abstract class can have constructor;
+        = Interface can have abstract methods, default and static methods and private methods introduced in java 9;
+        = Abstract class can have any kind of methods;
+
+33. What is Polymorphism?
+       = Polymorphism is one of the key concept of OOP.
+       = The word polymorphism means having many forms, and occurs when we have many classes that are related to each other by inheritance.
+         inheritance allows us to inherit attributes and methods from another class.  Polymorphism uses those methods to perform different tasks.
+       = A real- life example of polymorphism is a person who at the same time can have different characteristics.
+
+34. What are the types of Polymorphism?
+      = There are two main types of polymorphism i.e. runtime polymorphism and compile-time polymorphism.
+        Runtime polymorphism is achieved through method overriding, and
+        compile-time polymorphism is achieved through method overloading.
+
+35. Give a real world example?
+      = A real-life example of polymorphism is a person who at the same time can have different characteristics.
+        A man at the same time is a father, a husband, and an employee. So the same
+        person exhibits different behavior in different situations.
+
+36. Why and when do we need Polymorphism?
+      = Code reuse = it enables you to write more flexible and reusable code by allowing you to treat
+        objects of different types as if they were the same type.
+      = Method overriding: Polymorphism allows us to override methods in a superclass, providing a specific implementation in a subclass;
+      = Interface implementation:  it allows us to define an interface and implement it in multiple classes.
+      = Flexibility = Flexible code by separating the interface of an object from its implementation.
+37. Procedural programming?
+      = Procedural programming is about writing procedures or methods that perform operations on the data.
+        it is linear and executes from top to bottom.
+
+38. Benefits of OOP over Procedural Programming?
+      = Modularity or re-usability: OOP allows you to modularize your code by encapsulating related data and behavior into objects;
+      = Abstraction: OOP allows you to create abstract data types that hide their implementation details.
+      = Inheritance and polymorphism: OOP provides inheritance, which allows you to create new classes that are based
+        on existing classes and polymorphism, which allows you to treat object of different classes as if they are the same type.
+      = Encapsulation: OOP promotes encapsulation, which means that the internal workings are hidden from the outside world. This
+        provides better security and reducing the complexity of your code.
+      = Code organization: OOP provides a way to organize your code into logical, self contained units, making it easier to manage and understand.
+
+39. Disadvantage of OOP?
+      = Complexity: OOP can be complex to read and understand for the developers;
+      = It might be overhead in general, that means to be a negative factor in programming as it can lead to slower performance, increased
+        memory usage and other issues, that can make a program less efficient of effective.
+
+40. There are 2 type of casting in Polymorphism:
+     = Down Casting which means to cast larger reference type to smaller reference type  = that done explicitly;
+     = Up Casting which means to smaller reference type to larger reference type = that is done implicitly;
+     = There must me Is A relationship between the object type and reference type to be casted.
+
+41. Use of "super" and "this" Key Words?
+     = They are special keywords that are used to refer to different objects or methods within a class hierarchy.
+     = "Super" is used to refer superclass of the current class. 'Super' keyword is used to call a constructor or method of the superclass from a subclass.
+     = "this" is used to refer to a current object instance of a class. Also it calls the methods or constructors within the same class.
+     = Overall they are both important keywords in Java that help to manage class hierarchy and distinguish between class-level and
+       instance-level variables and methods.
+
+42. What are Solid Principles of OOP?
+    = Single Responsibility Principal - You should make sure that functionality are seperated, not good to put everything in one class;
+    = The Open-Closed Principle - Class/Module should be open for extension, but closed for modification. That means, you should add
+                                  some functionality instead of making changes to the existing one; calculator example, better to create
+                                  separate class for each operator, rather than put everything in one class.
+    = The Liskov Substitution Principle
+              - In simpler terms, this means that any method or property that works on the superclass should also work on
+                its subclasses, without any unexpected behavior or errors.
+    = The interface Segregation Principle
+              - A client should not be forced to implement an interface or it should not depend on a method it does not use;
+              - Better to separate methods and create different interfaces;
+    = The Dependency Inversion Principle
+            - Your code should be Loosely Coupled, not Title Coupled;
+            - Instead of creating direct connection between one class to another, better to create something in between.
+
+43. What is the superclass of every class in Java?
+    = the superclass of every class is the Object class. The Object class is the root of the class hierarchy, and provides a set of
+      common methods that are inherited by all other classes in Java. Some of the common methods provided by the Object class include:
+
+      equals(Object obj) : Compares the object for equality with the given object
+      toString() : Returns a string representation of the object
+      hashCode() : Returns a hash code value for the object
+      getClass() : Returns the class object for the object
+
+44.What is Object class in Java programming language?
+    =the Object class is the root of the class hierarchy. It is a built-in class provided by the Java platform, and is located in the java.lang package.
+
+45. Do you remember some of the non-static methods in Object Class?
+     = equals(Object obj): This method is used to compare two objects for equality. It returns true if the objects are equal; otherwise, it returns false.
+     = hashCode(): This method returns a hash code value for the object. This value is used by hash-based data structures, such as hash maps and hash sets,
+       to store and retrieve objects.
+     = toString(): This method returns a string representation of the object. The string representation can be used for debugging or logging purposes.
+
+46. Explain the toString() method?
+     = it returns string representation. e.g. Person class, we declared person name and age, we should override toString () method, in order to be able to print
+        this object in another class we create.
+47. What is the use of equals method in Java? How to override it?
+     = equals method compares two object to each other, if they are the same or not. e.g person class, declared person name and age. By overriding
+        equals method we can compare persons to each other by name and age and we can say if they are the same or not.
+
+        public class Person {
+            private String name;
+            private int age;
+
+            public Person(String name, int age) {
+                this.name = name;
+                this.age = age;
+            }
+
+            @Override
+            public boolean equals(Object obj) {
+                if (obj == this) {
+                    return true;
+                }
+
+                if (!(obj instanceof Person)) {
+                    return false;
+                }
+
+                Person other = (Person) obj;
+                return this.name.equals(other.name) && this.age == other.age;
+            }
+48. What is the difference between == and equals ()?
+   - == operator compares if the objects are same in the memory, if yes true, if not false;
+   - equals() method compared content and not the location. if the content is same, returns true, if not, returns false.
+   String s1 = "hello";
+   String s2 = "hello";
+   String s3 = new String("hello");
+
+   System.out.println(s1 == s2); // true
+   System.out.println(s1 == s3); // false
+   System.out.println(s1.equals(s3)); // true
+
+49. Why do we need Wrapper Classes?
+    = Wrapper classes in java provide a way to represent primitive data types as objects. The main reasons for using wrapper classes are:
+      1. To treat primitive types as objects: Java is an object-oriented language, and some APIs require objects to be passed as parameters.
+      2.To provide utility methods: Wrapper classes provide many useful methods for working with primitive types that are not
+        available on the primitive types themselves. For example, the Integer class provides methods to
+        convert a string to an integer, or to format an integer as a string.
+      3.To provide null values: Primitive types cannot be set to null, whereas objects can. By using wrapper classes,
+        we can create nullable objects that can be set to null when no value is present.
+      4.To use in collections: Collections in Java can only hold objects, not primitive types.
+
+50. How do you convert a String to Integer?
+    = We can use valueOf () method or parse () method.
+    Code Example:
+
+        String str = "1234";
+        Integer num = Integer.parseInt(str);
+        Integer num2 = Integer.valueOf(str);
+
+51. What are the some method of String Class?
+        - String class provides wide range of methods.
+            1.   length() - Returns the length of the string.
+            2.   charAt(int index) - Returns the character at the specified index in the string.
+            3.   indexOf(int ch) - Returns the index of the first occurrence of the specified character in the string.
+            4.   substring(int beginIndex, int endIndex) - Returns a substring of the string
+                 starting at the specified index and ending at the specified index.
+            5.   toLowerCase() - Returns the lowercase version of the string.
+            6.   toUpperCase() - Returns the uppercase version of the string.
+            7.   trim() - Returns a copy of the string with leading and trailing white spaces removed.
+            8.   replace(char oldChar, char newChar) - Returns a copy of the string with all occurrences
+                 of the specified character replaced with the new character.
+            9.   startsWith(String prefix) - Returns true if the string starts with the specified prefix, otherwise false.
+            10.  endsWith(String suffix) - Returns true if the string ends with the specified suffix, otherwise false.
+            11.  equals(Object anObject) - Returns true if the string is equal to the specified object, otherwise false.
+            12.  equalsIgnoreCase(String anotherString) - Returns true if the string is equal to the
+                 specified string, ignoring case considerations.
+            13.  split(String regex) - Splits the string into an array of substrings based on the
+                 specified regular expression.
+            14.  concat(String str) - Concatenates the specified string to the end of the current string.
+
+52. The difference between String and StringBuilder:
+       - String is immutable; String Builder is mutable (you can manipulate String without creating new object)
+       - String is threadSafe, however StringBuilder is not threadSafe;
+
+53. The difference between String and StringBuffer:
+       - String is immutable; String Builder is mutable (you can manipulate String without creating new object)
+       - String is threadSafe, however StringBuilder is not threadSafe;
+
+54. The difference between StringBuilder and StringBuffer:
+       - StringBuffer is thread safe, StringBuilder is not thread safe, however it is faster then StringBuffer.
+       - Overall the choice between StringBuffer and StringBuilder depends on the specific requirements;
+       - StringBuilder is not Synchronized and StringBuffer is Synchronized.
+
+55. What is constructor?
+       - In object-oriented programming, a constructor is a special method that is used to
+         initialize an object's state when it is created.
+       - The constructor has the same name as the class and is defined without a return type.
+       - It is called automatically when an object is created using the new keyword.
+       - Constructors can also be overloaded, which means that there can be multiple
+         constructors with different parameter lists.
+
+56. What is the difference between Method overloading and Method Overriding?
+    Method Overloading:
+        1. Multiple methods that have the same name;
+        2. It is performed within class or sub-class;
+        3. Parameters must be different;
+        4. Access specifier doesn't matter;
+        5. Return Time of method doesn't matter, it can be same or different;
+        6. All methods included private and final can be overloaded;
+        7. Static method can be overloaded;
+        8. Abstract method can be overloaded;
+    Method Overriding:
+        1. One method with different implementation;
+        2. It occurs in two classes that have IS-A relationship;
+        3. Parameters must be same;
+        4. Access specifier must be same or more visible than original method;
+        5. Return type must be same (for primitive and void) or covariant (for object) in method overriding;
+        6. private and final methods cannot be overridden;
+        7. A static method cannot be overridden but can be hidden by defining a static method with same name and
+           parameters in child class.
+        8. Abstract method should be overridden;
+
+57. Difference between constructor and method?
+    - Name= Constructor has the same name as the class, method might have different name;
+    - Return Type= Constructor doesn't have return time; While method must have return type, or declared as "void";
+    - Purpose = Constructor is used to initialized object when it's created, method is used to perform some action;
+    - Constructor is automatically called when object is created, while method must be explicitly called by the user.
+    - Accessibility: A constructor is always public, while a method can be public, private,
+      protected, or package-private.
+
+58. Can a constructor be directly called through the method?
+    - A constructor cannot be explicitly called from any method except another constructor. The only place from which you can invoke constructors
+        using this() or super() is the first line of another constructor. But, we can call all the members of a class (methods, variables, and constructors)
+        from instance methods or constructors.
+
+
+58. How do you call a superclass constructor from a constructor?
+    - We can call constructor from Superclass, from a subclass constructor using super() keyword.
+
+59. What are final classes and final methods of the Java Programming Language?
+   =Final Class
+    - Final keyword in general is applicable only for class, method or variable;
+    - When class is declared final that means it won't be copied, won't be parent of any class.
+    - Final class can not be extended and never can be super class. Final keyword prevents inheritance.
+  =Final Method
+    - Final method can not be overridden.
+    - Implementation of the methods becomes unchangeable.
+    - However, we can overload any method, even final method.
+    - For constructor, as a special method, final method is not applicable;
+
+60. What are access and non-access modifiers that can be added to a class or class-member declaration?
+    - There are 4 types of access modifiers, the difference is only visibility/ accessibility.
+          - public - visible in the same class and package and outside the same package if you call through the class
+          - Protected - visible/accessible inside the same class and package. Not visible outside the same package
+                        Protected is accessible outside the same package if we declare it in subclass.
+          - Default - Never visible outside the same package.
+          - Private - only accessible from the same class.
+    - Non-access modifiers modify the behavior of a class or class member in various ways, but do not affect its accessibility.
+          - "final" = indicates that a class or class members cannot be further extended or modified.
+          - 'Static' = indicates that a class member belongs to the class itself, rather than to any instance of the class.
+          - 'abstract' = indicates that a class or class member is incomplete and must be implemented by a subclass.
+          - synchronized = indicates that a method can only be accessed by one thread at a time.
+
+61. What are exceptions in Java programming language?
+    -  Exception is an event that occurs during the execution of a program, which disrupts the normal flow of the program's instructions.
+    -  When an exception occurs, the program execution is terminated and exception object is created to provide information about the error,
+       including the type of the exception.
+       Exceptions can occur due to different reasons, such as invalid input, incorrect code logic, or unexpected system errors.
+    -  There are 3 types of exceptions in Java:
+        1. Checked Exception = exceptions when compiler gives error
+        2. Unchecked exceptions = exceptions when happens run time, such as NullPointerException, ArrayIndexOutBoundsException, ArithmeticException.
+        3. Errors = There are exceptions that indicate a serious problem that cannot be handled by the program. E.g. OutOfMemoryError, StackOverflowError.
+
+62. Why is exception handling important?
+    - Exception handling is important for several reasons:
+        - Prevent program crashes
+        - Improve user experience: Exception handling can help improve the user experience by providing more informative error messages.
+            Instead of simply crashing or displaying a generic error message, programs can display specific messages that inform users about the problem.
+        - Debugging - Exception handling can also make it easier to debug programs. When an exception is thrown, developers can use the information provided
+          to locate the source of the problem and fix it.
+        - Maintain program flow: Exception handling allows programs to maintain their flow even when unexpected situations occur. By catching and handling exceptions,
+          programs can continue to execute without being interrupted by errors.
+        - Code re-usability: Exception handling makes code more reusable by allowing developers to write code that can handle a variety of different situations.
+          Instead of writing separate code for each possible error scenario, developers can write a single piece of code that handles multiple exceptions.
+
+63. Difference between errors and exceptions?
+        - Exceptions are subclasses of the Exception class, while errors are subclasses of the Error class.
+        - Exceptions are typically caused by application -level problems, while errors are caused by system-level problems.
+        - Exceptions can be handled through try-catch blocks or by declaring them in a method's throws clause, while errors cannot be handled in the same way.
+          Errors indicate serious problems, like our-of-memory errors or hardware failures.
+        - Exceptions and errors are both types of runtime problems in Java, but they differ in their types, handling, and severity.
+
+64.  what happens when you throw the checked exception from a method?
+        -
+
+65. How do you handle exceptions?
+        1) Try-catch block = it helps to catch and handle exceptions that occur within a block of code.
+            Try block contains the code that may throw an exception, and the catch block contains the code that handles the exception.
+            Syntax:
+            try {
+            //tryBlock statement
+
+            }catch (ExceptionClass e){
+
+            //catch block statement
+            //handle exception
+            }
+        2)  throws keyword: = the throws keyword is used to declare that a method may throw a checked exception.
+            Syntax:
+
+            public void myMethod() throws IOException {
+
+             //code that may throw on IOException
+            }
+
+66. How can you use throw clause?
+       - 'throw' key word explicitly throws exception from a method or block of code.
+       - The 'throw' clause is used to throw a specific exception object, which can be any class that extends the "Throwable" class.
+
+      public void myMethod (int value) throws IllegalArgumentException {
+      if (value < 0) {
+      throw new IllegalArgumentException ("Value cannot be negative")
+      }
+
+      //code that executes if value is not negative;
+   }
+
+   1) create method and inside the method we need to pass exception instance that extends the "Throwable" class, such as 'Exception' or 'RuntimeException.'
+   2. "throw" statement should be inside a method or block of code.
+
+67. how does Java programming language pass variables to methods? by values or by reference?
+    - In Java variables are passed to methods by values, not by reference.
+    - Java passes variables to method by value, which means that any changes made to the variable within the method do not affect
+      the original variable outside the method.

@@ -1,0 +1,10 @@
+Notion - for organizing notes
+
+1. Spring manages beans, but abstraction level is our responsibility. We are responsible creating all the packages.
+
+2. Maven is not Intellij's product, is standalone and helps us to manage project, adding some feature, dependencies and etc.
+
+3. two different way to wire, inject objects = pass as parameter in the method, another provide as method inside new DellCase;
+
+4. Default name when we use @Qualifier is the class name, starting with lower character and then Camel Case structure.
+

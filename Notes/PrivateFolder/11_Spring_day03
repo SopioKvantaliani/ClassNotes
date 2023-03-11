@@ -1,0 +1,51 @@
+1. When we join company we need to ask if they have any preferable packaging approach;
+    = Service - whatever unique things happening in your application, business logic, should be written in Service package.
+    = Repository = refers to the object working directly with a database, anything related to the database we put in Repository package;
+                    database methods;
+                    when we create class/interface in Repository, after name we need to put word "Repository" itself. eg. CommentRepository
+    = Proxy = sending email, sending text message, everything outside the application need to be put in Proxy package;
+    = Model/Entity = all objects we need for application should be located in Model/Entity package
+
+2. All the packages we create this is our framework, how we build application.
+   2.1 each class based on their package should end the class name with the same package name. eg. Service package, class CommentService;
+
+3. Always put your runner class (Main Class) under the main package, which is "Cydeo". This is important.
+
+
+4. Which objects should be part of the Spring Container?
+    = If one class "has a "relationship with another class needs to be added in the container. Or the class is required by other classes.
+    = We never put @Component to our model package classes, Interface classes because we never create objects from interface;
+
+6. What happens if we have multiple implementation that require different objects?
+    = We never use @Primary annotation in Stereotype approach. We need to use @Qualifier annotation for that.
+    = We put @Qualifier in the constructor, before the implementation object we need and after annotation we put in parenthesis class name;
+    = We can customize class name -> we put @Qualifier annotation in the class level and modify name there as we did in terms of @Bean name.
+
+7. How Spring Manages the Beans?
+    = Spring has multiple approaches to create beans. These approaches  are called "scopes".
+        Spring bean scopes:
+            = Singleton Bean - Spring's default approach for managing the beans. Singleton Bean is a bean that is instantiated only once per Spring container.
+            = Prototype Bean Scope = whenever you request reference to a prototype-scoped bean, Spring creates a new object instance.
+              We need to use @Scope annotation
+
+
+Summery of IoC (Spring core):
+    - How to create container?
+
+    - How to create configuration class (@Configuration)
+
+    - How to add beans in the container?
+        - @Bean annotation
+        - Stereotype (@Component, ComponentScan)
+
+    - Dependency Injection (DI)
+        - Wiring
+        - Autowiring (@Autowired), by using Constructor
+
+    - Multiple Objects
+        - @Primary, @Qualifier
+
+    - Bean Scope
+        - Singleton (Default)
+        - Prototype (@Scope)
+

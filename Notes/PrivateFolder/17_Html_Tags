@@ -1,0 +1,33 @@
+
+1. Thymeleaf
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+
+2. <!--Display Value of model-->
+<h2 th:text="${students.get(0).firstName}"></h2>
+
+3. Concatenate
+${....} keep value
+<h2 th:text="${ 'Hello'+students.get(0).firstName}"></h2>
+
+4. Creating links
+@{........}
+
+5. There is another method with end-point /student/welcome and whenever you click "Welcome" it directly finds that page
+<a th:href="@{/student/welcome}" > Welcome </a>
+
+6. ${....}
+    - $ and curly braces mean we are displaying something in the browser.
+    - What we display? - whatever is inside the curly braces.
+    - Concatenate rules: after + we need to use empty ' '
+
+7. If we want to catcher info from browser, syntax is:
+
+8. If we want to pass data to browser, syntax is:
+
+9. Container, fitting forms on our screen resolution.
+<div class="container">
+     <!-- Content here -->
+   </div>
+
+10. Iterate
+<option  th:each="theState : ${stateList}"></option>

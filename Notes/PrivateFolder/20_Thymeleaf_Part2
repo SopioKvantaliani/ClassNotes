@@ -1,0 +1,135 @@
+1. Template Engine: is used to display data in the view that the controller sends - Thymeleaf, JSP, etc...
+
+2. Thymeleaf: provides a good support serving an HTML5 in web application.
+               To integrate Thymeleaf with Spring Boot, we need to add: spring-boot-starter-thymeleaf.
+               To convert HTML to Thymeleaf, we need to add attribute, xmlns: th="http://thymelead.org"
+               When we put this link, that means we bring thymeleaf library from online.
+
+3. Thymeleaf tag/components (whatever we need to make an application):
+    - Displaying Values: th:text is used to display the value of model attributes (we try to display something from model)
+                         ${attribute_key} expression is used to refer to any of the attributes we send from controller;
+                         e.g.
+
+                         @Controller
+                         @RequestMapping("/car")
+                         public class CarController {
+
+                            @RequestMapping("/info")
+                            public String carInfo(){ //localhost:8080/car/info
+
+                                List <String> cars = Arrays.asList ("Honda", "Nissan");
+
+                                model.addAttribute ("cars", cars); //this names are always same.
+
+                                return "car/car-info"; //
+                            }
+                         }
+                         car-info.html
+
+                         <h2 th:text="${cars}"></h2> //here we pass attribute value
+
+4.  How to create link?  its very important, because it provides us to navigate inside the pages.
+        Link:  @{...} expression is used to create URLs in our Thymeleaf.
+
+        Absolute URLs: <a th:href= "@{https://www.amazon.com}">Cydeo</a> //whenever we click Cydeo it will directs us to amazon page.
+        Relative URLs: <a th:href = "{/car/buy}">Buy</a> //link Buy, whenever we click it will go to controller, it will find endpoint and executes. Whatever inside that method, well see that view.
+        Adding parameters to link: <a th:href= "@{/car/buy(year=2019)}">Buy</a> //localhost:8080/car/buy?year=2019
+
+5. Iteration: th:each is used to achieve iteration
+    Syntax:
+        for (String name:names){
+          sout(name);
+        }
+
+     <ul>                                   //capture car eg. honda and ect
+        <li th:each="car : ${cars}" th:text= "car"></li> //
+    </ul>
+
+     <select>
+        <option th:each=""></option>
+     </select>
+
+     <table>
+        <tr th:each=""></tr>
+     </table>
+
+6. Adding CSS, JS, Images : The default directory is src/main/resources/static
+    <link th:href="@{/css/main.css}" ref = "stylesheet"/>    //location of the file, stylesheet specifies that it is css.
+    <img th:src = "@{/images/java.png}"/>
+
+7. Fragments: reusable common parts in our pages
+              replace - replaces the current tag with the tag defining the fragment
+             e.g
+             index.html
+             <div th:fragment = "main-menu">
+                <a href="https://cydeo.com"/>Cydeo</a>
+             </div>
+
+             welcome.html
+              <div th:replace = "/fragments/index :: main-menu" = "main-menu">
+             </div>
+
+8.  Conditional Logic
+    <!--Conditional Logic-->
+
+    <div th:text="${students.get(0).age>25 ? 'Eligible': 'Not Eligible'}"></div>
+
+    <div>
+    <!--    if it's true you'll see 'Arizona'-->
+        <span th:if="${students.get(0).getState()=='Arizona'}">Arizona</span>
+    <!--    if not true you'll see No Arizona-->
+        <span th:unless="${students.get(0).getState()=='Arizona'}">No Arizona</span>
+
+    </div>
+
+
+9. HTTP Methods:
+    - GET - The client's request only retrieves data (get the page). Whenever we execute end point, spring already put this method as default. method=requestMethod.GET
+    - POST - The client's request sends new data to be added by the server (e.g. when you search something you post something, sending data)
+    - PUT - The client's request changes a data record on the server-side.
+    - PATCH - The client's request changes only partially a data record on the server-side.
+    - DELETE - The client's request deletes data on the server-side.
+
+    @GetMapping - we don't use class level, we use when we retrieving something
+    @PostMapping - we use when we post something
+    @RequestMapping () - We use only on class level, or method level
+
+    Class - > Object
+    Car -> car (name, year, engine) //they are properties
+
+    Object -> UI //How we can move object to UI?  Each filed belongs to the object. e.g Mentor class, Mentor Object (properties name, email, gender....)
+
+    Object - >DB
+
+  class Mentor {
+  name;
+  lastname
+  }
+
+
+10. When we open application:
+    1. We saw some form
+    2. whatever we see is object (object of course, object of student and etc)
+    3. This object comes from the class. From this class we create branch of objects and we save in database
+    4. Whatever we put in the 'form' we put properties of that object (e.g. mentor object: name, email, gender, batch number and etc all are mentor's properties)
+    5. We need to connect empty object we described in controller to the 'form' in html file
+
+11. Getter & Setter
+    - When the form is loaded, Spring MVC will call getter methods.
+    - When the form is submitted, Spring MVC will call setter methods.
+
+12. how can I access to "mentor" attribute in this method? (meaning to print in the method object that we 'Registered' from UI side);
+ -@ModelAttribute("mentor") Mentor mentor
+
+13. Steps to validate data:
+   13.1 insert dependency
+           <dependency>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-starter-validation</artifactId>
+               <scope>test</scope>
+           </dependency>
+   13.2  put following annotations in the object class
+         @NotNull ---> Field shouldn't be null
+         @NotEmpty --> Field shouldn't be ""
+         @NotBlank --> Field shouldn't be "     "
+

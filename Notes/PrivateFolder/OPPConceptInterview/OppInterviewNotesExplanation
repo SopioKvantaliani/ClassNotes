@@ -1,0 +1,48 @@
+1. OOP Concept (Object Oriented Programming)
+
+2. Main Idea = Writing reusable, scalable and maintainable code. (example, developers come and go, company should have understandable and maintainable codes)
+
+3. How you implement Inheritance:
+    -In our e-commerce project, there was a discount structure. There are 2 types of discount;
+        1. RateBasedDiscount
+        2. AmountBasedDiscount
+    - And many types of discount can be added in the future.
+    - To be able not to write same code again and again, I created a parent Discount class and I added same variables and methods inside it.
+       After that I created subclasses RateBasedDiscount and AmountBasedDiscount and derived parent Discount class.
+       Other examples Category class, Balance class;
+       After using inheritances as a subclass, they can reach all of the public and protected variables and method of parent class.
+
+4. Why did you use inheritance? What did you achieve to use inheritance?
+    -
+
+5.Encapsulation
+   - As an ecommerce project we have many clients. Some of them internal some of them external. To hide and control our data we encapsulate our variables.
+    As an example inside of the RateBasedDiscount class has a variable called rateAmount. We don't want to be changed by any clients. So I converted the variable
+    as private and  I didn't add setter method. There is only getter method for discountAmount variable. Means that during the runtime discountAmount can not be
+    setted by other parties of your application. It can only be readable; As a team, anyone can make a mistake and assign a value to discountAmount and if you assign
+    a value it, there will be a problem for cart calculation. To prevent this issue we decided not to add setter method and we have limited the accessibility of
+    discountAmount.
+
+6. Abstraction
+    - It is the process of hiding implementation details and showing only functionality to clients. Implementation of abstraction inside the ecommerce project,
+       I can give an example; We have decided to make abstract Discount class. Why? Because there will be common methods like calculateCartAmountAfterDiscountApplied.
+       Each of subclasses that extends Discount class needs to have a method and implement it. That's why we need to make it abstract. As common method
+       calculateCartAmountAfterDiscountApplied, needs to be abstract as well otherwise we can not force the subclasses to implement the method.
+       Each of the subclasses has a different implementation of the method. For example, RateBasedDiscount class (amount-(amount*rateAmount/100)) this one and
+       AmountBaseDiscount class has implementation like (amount-discountAmount). Also parent class doesn't have an implementation for this method.
+    - example: you press button and message is sent, but you don't know how it is done in the back.
+
+7.  Polymorphism
+  -In the ecommerce project, we have a checkout option that provides to our customer make their payments different options.
+   At the beginning there was 2 options but according to product roadmap. Options are Pay with CustomerBalance and Pay with
+   GiftCardBalance. For example pay with credit card option can be added later on. As you can see here, the main
+   functionality here to be able checkout but different business logics. You can think that checkout is a seperate project.
+   To be able to provide all options together and when new option would like to be added to checkoutservice to make it easier.
+   we decided to have an interface called CheckoutService. There will be a method called checkout. It is going
+   to accept some parameters and if checkout is succesfull it will return true otherwise false. Each payment option
+   will different implementation. First impl is CustomerBalanceCheckoutServiceImpl. it is basically customer's
+   current balance. When customer would like to pay the cart with only with current balance this
+   implementation will work and checkout will be completed. Second implementation is MixPaymentCheckoutServiceImpl.
+   If a customer would like to make the payment with both current and giftcard balance, this implementation will work.
+   With this structure, we can basically add or delete payment options easily. It is just about to create
+   class called CreditCartCheckoutServiceImpl.

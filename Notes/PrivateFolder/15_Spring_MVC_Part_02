@@ -1,0 +1,46 @@
+MVC Part2:
+
+1. What we will do if html requests any data from DataBase?
+      - We need to use Template Engine and pass the variable to html
+      - Thymeleaf is most famous template engine, because its end point is html.
+
+2. Steps how to turn Html file into thymeleaf?
+      - We need to turn html file into thymeleaf. We need to insert following extension <html xmlns:th="http://www.thymeleaf.org">
+      - We need to use "th" tag inside the tag to print anything we want on the UI side.
+      - Syntax to bring attributes on the screen is: "${attributeName}"
+
+3. Steps Java side to prepare attributeName and attributeValue?
+      - Put class level annotation @Controller
+      - Put method level annotation @RequestMapping; We can add annotation on the class level too.
+      - Use method model.addAttribute and define name and value of the attribute;
+      - Finally, we need to insert Attribute name in "th" tag in Html side;
+
+4. All the controller classes are registered in Handler Mapping.
+
+5. Query Parameters (?)  - Key = Value
+   -  After using ? we need to use key = value; eg. amazon /s ? K=Chair
+   -  Query Parameter means that we are looking something;
+
+6. E.g Amazon search = How I will bring something from user interface to my code?
+       How java code understand what the Query Parameter requests?
+        - There are four ways, but 2 is most likely used:
+          -1) An Http requests parameter: simple way to send values from client to server in a key-value pair format. They are also called Query Parameter.
+              @RequestParm
+               /s ? k=chair
+               /s ? k=tv
+          -2) A Path Variable: sending data through the request path itself.
+              @PathVariable to capture data from UI
+                /c/ jewelry-and-accessories
+                /c/ clothing-and-shoes
+
+7. Example of Query Parameter, we can put as much as we want if we want to request more then one info:
+        - localhost:8080/student?name=Mike&age=30
+        - Query starts from "?"
+        - "name" & "age" is the key of the requested parameters
+    How Java code understands that request?
+        - We use annotation @RequestParm, it tells Spring it needs to get the value from the Http request parameter with the same name as the method's parameter name.
+
+8. require=false - you don't need to pass query parameter in the browser, it will work without it.
+
+
+

@@ -1,0 +1,4 @@
+
+
+kill -9 $(lsof -ti:8080) - Run in Terminal when port 8080 doesn't work.
+ping.google.com =

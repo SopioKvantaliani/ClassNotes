@@ -1,0 +1,97 @@
+Problem Definition
+
+1. Problem = Two Sum
+   Example:
+   input: nums=[2, 7, 11, 15], target=9
+   output: [0.1]
+   Explanation: Because nums [0]+ nums[1]==9, we return [0,1]
+
+   Understand the Problem:
+   - Ask questions to interviewers!
+   - Clarify everything!
+   - Cooperate!
+   - Request help!
+   - Don't forget they are looking for a team member!
+
+   - Is the array sorted? NO
+   - Is Duplicated values accepted? NO
+
+2. Model - means an example;
+
+3. What is the Collections Framework?
+    - Collection in Java is a framework that provides an architecture to store and manipulate the group of objects.
+    - Java collections can achieve all the operations that you perform on a data such as searching, sorting, insertion, manipulation, and deletion.
+    - Interfaces
+        =Set
+        =List
+        =Queue
+        =Deque
+    - Classes
+        =ArrayList
+        =Vector,
+        =LinkedList
+        =PriorityQueue
+        =HashSet
+        =LinkedHashSet
+        =TreeSet
+    - Advantage of Collection is: It reduces programming effort and increases performance
+
+4. Dynamic Arrays are arrays that can grow automatically.
+   Dynamic Arrays use dynamic memory allocation.
+   Dynamic Array Data Structure - ArrayList and Vector:
+    - If we are working in multi-threads environment using Vector is preferable;
+    - If we are working in single thread environment using ArrayList is preferable;
+
+5. ArrayList allows:
+    - Duplicate values
+    - Insertion order is maintained
+    - It accepts only Non-primitive data type inside.
+   Methods:
+    - add (E e) - adds specified element to the end of this list - O(1)
+    - add (int index, E element) - Inserts the specified element at the specified position in this list - O(n)
+    - clear () - Removes all of the elements from this list
+    - clone() - Returns a shallow copy of this ArrayList instance
+    - contains (Object o) - Returns true if this list contains the specified element
+    - get(int index) - Returns the element at the specified position in this list
+    - indexOf (Object o) - Returns the index of the "first" occurrence of the specified element in this list.
+    - isEmpty () - returns true if this list contains no elements
+    - iterator() - returns an iterator over the elements in this list in proper sequence
+    - lastIndexOf(Object o) - Returns the index of the last occurrence. or -1 if the element isn't there.
+
+6. If we implement equals method, we need to implement hashCode too, this is the golden rule.
+   Why we need to implement? - to avoid unintentional error (e.g. if we don't override hashCode, Set collection might accepts duplicates);
+
+7. Set
+    - Set is child interface of Collection
+    - Duplicates are not allowed.
+   = HashSet
+   = LInkedHashSet
+   = TreeSet
+
+8. HashSet
+    - HashSet contains unique elements only
+    - HashSet class is not synchronized (But it can be synchronized, we can find syntax in google)
+    - HashSet doesn't maintain insertion order.
+   Methods:
+    - add(E e) - adds the specified element to this set if it is not already present. Returns boolean;
+    - clear () Removes all the elements from this set
+    - clone () Returns a shallow copy of this HashSet instance: the elements themselves are not cloned.
+    - contains (Object o) - returns true if this set contains the specified element
+    - isEmpty () - returns true if this list contains no elements
+    - iterator() - returns an iterator over the elements in this list in proper sequence
+    - remove (Object o) - removes the specified element from this set if it is present;
+    - size() - returns the number of elements in this set.
+
+9. Map
+   - Data structure based on key+value
+   -Map interface does not extend Collection interface
+    - HashTable
+    - HashMap
+    -LinkedHashMap
+
+10. Difference Between HashMap and HashTable:
+    - HashMap is a non-synchronized data structure. It is not thread-safe and cannot be shared across many threads without the use of synchronization code, while Hashtable
+      is synchronized. It's thread-safe and can be used by several threads.
+    - HashMap supports one null key and ....
+
+11. Difference Between HashMap and TreeMap

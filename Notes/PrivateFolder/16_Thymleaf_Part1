@@ -1,0 +1,51 @@
+
+1. Template Engine
+    - A template engine is a dependency that allows you to easily get and display in the view variable data that the controller sends.
+    - Example of Java Template Engines: Velocity, Mustache, FreeMarker, Thymeleaf, Groovy, Jade, JSP
+    - Mostly used is Thymeleaf, because it works with Html file. Even extension is Html
+2. Why we need template engines?
+    - Html has only capability to show us data in frontEnd. To make html capable to show data in the backend we should use Template Engines;
+
+3. Thymeleaf is a java-based library used to create a web application. To able to integrate Thymeleaf with Spring Boot, we need to add
+    the "spring-boot-starter-thymeleaf" dependency.
+
+4.  Steps to integrate Thymeleaf with Spring Boot:
+    1) Add dependency -"spring-boot-starter-thymeleaf"
+    2) Add attribute to Html tag   --     xmlns:th="http://www.thymeleaf.org"
+        -This tag is equivalent to an import in Java. It allows us further to use the prefix "th" to refer to specific features provided by Thymeleaf in the view.
+
+5. End-point:
+    1) Class level @RequestMappin ("/student")
+    2) Method level @RequestMapping ("/register")
+ Class level end-point will be concatenated with method name end-point.
+
+6. - If you need to carry data to view on Html:
+        - we need to pass as a method parameter "Model model".
+        - We need to define model attributes = model.addAttribute ("students", DataGenerator.createStudent());
+        - Attribute name is a kind of variable, which holds the data whichever might come from dataBase;
+
+5. What is the Web DevTool?
+    - Without rerun the server only building the application rebuild the application I am able to see all the updates;
+
+6. There is another method with end-point /student/welcome and whenever you click "Welcome" it directly finds that page
+<a th:href="@{/student/welcome}" > Welcome </a>
+
+7. Adding Parameters to Link
+    - e.g When you can find some class based on ID
+    localhost:8080/student/welcome?id=3
+    -How we can pass this value from the view?
+    Syntax:
+    <a th:href="@{/student/welcome(id=3)}">Link</a>
+
+8. Iteration
+    - th:each is used to achieve iteration
+    - It will accept and iterate over some different data types such as:
+        -Objects implementing java.util.Iterable
+        - Objects implementing java.util.Map
+        - Arrays
+        - Any other object is treated as if it were a single - valued list containing one element.
+
+9. Working with Fragments
+ - Fragments are reusable common parts in our pages (e.g. navigation top bar, which never changes, footers copyright never changes)
+ - replace the current tag with the tag defining the fragment;
+ - Using fragment structure we can create all this unchangeable parts and call in main html file.

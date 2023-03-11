@@ -1,0 +1,67 @@
+Spring Part 2
+
+1. 3 Steps to use @Bean Annotation:
+    1.1 Create Configuration Class using @Configuration annotation
+    1.2 Add to the configuration class a method that returns the object instance that you want to add to the context/container.
+    1.3 You need to annotate the method with  the @Bean Annotation.
+       - Method Name is the Bean's default name;
+       - We can declare Bean's name separate then the method name; How? @Bean(name: "sony")
+
+2. How to get reference of a bean from the Container (Spring Context)?
+    Car c = container.getBean (Car.class); // System.out.println(c.getMake);
+    String s = container.getBean (String.class) //System.out.println(s);
+    Integer n = container.getBean (Integer.class); //System.out.println (n)
+
+3. Annotations:
+   3.1 @Configuration = on top of container class
+   3.2 @Bean  = manage and create object for us
+   3.3 @Primary = When we have same type of different object (Type is e.g Monitor and objects might be Dell, Sony, Accer ect)
+                  we can define one of them as @Primary, that means whenever we call/create that object we don't need
+                  to pass objectName;
+                  The primary bean is simply the default choice of the Spring.
+   3.4 @ComponentScan = putting under @Configuration. Spring will scan all the classes whichever has @component on top.
+   3.5 @Autowired = used for autowiring
+   3.6 @Wire = when manual wiring
+
+ 4. There are two ways to add beans in the Spring Context.
+       -  Using the @Bean annotation
+       - stereotype annotation
+            = Steps to add beans in the container through Stereotype:
+                1. Use @Component annotation on top of the class from where you want to create object.
+                2. Use @ComponentScan annotation over the configuration class (it will check all @Component annotated classes and creates objects)
+                - When creating bean through "Stereotype Annotation", Configuration class should have 2 annotations "@Configuration" & "@ComponentScan"
+                3.define in parenthesis base package "com.cydeo" that we want to be checked = @Configuration("com.cydeo")
+
+5. @ComponentScan
+    - If you leave @ComponentScan as is Spring will scan all the class belongs to that package, whichever configuration package has.
+    - But if you want to scan other classes too you need to specify (basePackages = "");
+
+6.  What is the difference between @Bean and StereoType Annotation?
+    - if we have control on the classes we can use StereoType Annotation
+    - If we don't have control on the classes and we need to create object, like String class, Integer class, we create method and use @Bean annotation;
+
+7. Relationship Among Beans:
+   There are two ways to link Beans:
+    - Wiring: This is approach where the relationship is implemented by directly calling @Bean annotated method in other @Bean annotated method.
+        example: Person has a relationship with a car object. Here we need to wire @Beans.
+     - For wiring we need to call method in the setter (We never do that), or pass object as parameter in the constructor.
+     - There are 2 ways to pass the object to another object. 1. pass a method parameter, 2. pass object method in the new Object;
+
+    - Autowired:
+
+ 8. Spring never creates two instance for the same object. If the object is inside the container, Spring just use the existing Object.
+
+
+9. There are 3 ways in which we can use the Autowired annotation:
+    = Constructor Injection - injecting the value through the constructor for the class;
+    = Setter Injection - Injecting the value through setter
+    = Field Injection: In this technique, the container injects the dependency directly into the class's fields.
+        e.g Field is - private String name ()
+
+10. Spring's new version says whenever you create constructor I will do all the dependency injection for you. After Spring version 4.5 (approximately)
+11. Dependency Injection (DI) cannot be done on the primitives; We need to define the values in advance. e.g new Dimension (int int int) can't be injected.
+
+
+
+
+

@@ -1,0 +1,71 @@
+Spring MVC (Spring Architecture)
+
+1. MVC is implemented not only by Spring, but other languages use MVC Architecture.
+
+2. What is a Web App?
+    - Any application we access through our browser is called web-Application
+    - Some applications we download, install as program in our local, this is desktop application
+    - Anything that runs in the browser.
+
+3. What is the component of Web-Application?
+    - The client -side- FrontEnd portion
+    - The server-side - Backend portion
+
+4. www.cydeo.com -> Server -> response from backend
+
+5. What are those different fashions to implementing web-application or web application?
+    - There are 2 different fashions (ways) to create application:
+        - User requests something (e.g amazon.com ), database is providing fully baked view in response to a client's request.
+        - Apps using frontend-backend separation. Backend responsibility is to create small live data and anybody needs it can take it and use it.
+            This structure is mostly used in the market. Advantage is = Any frontend developer can take and use ready API-s, there is no need to create every client's request
+            again and again.
+
+6. API = means Live Data (e.g. Balance, Interest rate, state info)
+
+7. How the Client and the Server Side Communicate?
+    - A web browser uses a protocol (common rules) named Hypertext Transfer Protocol (HTTP) to communicate with the server over the network.
+
+8. How my Http understand my Java Code?
+     - Server is a translator between your Java code and HTTP. HTTP communicates between user side and backend side.
+       There are different servers available - Spring gives us Tomcat server, it comes already with Spring.
+       Tomcat server is attached to your application, it takes your Java code and translates to HTTP. This is server's role.
+       Tomcat comes with Servlet Container and provide one servlet object, which translates Java codes to HTTP.
+
+9. port: 8080 is default server address. If you say server.port=0, this means random port.
+
+10. @SpringBootApplication (exclude = {AopAutoConfiguration.class}) -this is how we can exclude some classes from creating and managing beans.
+
+11. MVC - stand for Model, View, Controller
+    View = means whatever we built in Html
+
+12. How Html view comes when I click the button?
+    - This is connected to MVC Architecture; But how?
+    - Dispatcher Servlet - takes certain requests and based on this request dispatcher Servlet decides whichever view user will see.
+                            How dispatcher servlet know that .login page is not e.g. .signup page?
+
+    - Controller class - inside the controller class there are method, returning view (java portion);
+            e.g Class A ->MethodA -> return login.html
+                Class B ->MethodB -> return register.html
+    - Handler Mapping - tells Dispatcher Servlet where it can find requested class that return e.g. .login page.
+    - View Resolver - keeps all view, Dispatcher Servlet takes requested view from there and show to frontEnd.
+
+13. MVC Architecture Workflow:
+    Whenever dispatcher servlet getting request, it goes to Handler Mapping and requests that information. Handler Mapping says /login method is located
+    in Class A and returns login. Than Dispatcher servlet goes in View Resolver, takes the view and shows in the frontEnd.
+    That is MVC Architecture (only M is missing).
+
+  STEPS:
+    1. Make Controller Classes
+    2. Spring boot behind the scene will register them in the Handler Mapping
+    3. Request came - > Dispatcher Server tries to find request class ->
+        -> Handler Mapping redirects to the class location (Controller) ->
+         -> Dispatcher server finds requested class and goes to View Resolver ->
+            -> Dispatcher server finds requested html and returns to UI.
+
+14. @Controller - annotation means two things:
+    1 This class will defined as a Bean and container will manage the Beans
+    2 This class will register Handler Mapping for you
+
+15. @Component is Parent Class - @Controller is Child
+
+
