@@ -1,0 +1,9 @@
+
+1. If you try to access one end-point, and that end-point only returns view, you don't need to create controller, you can create:
+   @Configuration file, use WebMvcConfigurer interface, and we can override one method called "addViewControllers", and define here
+   some end-points.
+   e.g. public void addViewControllers (ViewControllerRegistry registry){
+   registry.addViewController ( "/welcome").setViewName ("welcome");
+   }
+
+2.
