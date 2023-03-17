@@ -6,4 +6,65 @@
    registry.addViewController ( "/welcome").setViewName ("welcome");
    }
 
-2.
+2. @AllArgsConstructor - Lombok doesn't create super class constructor, it only creates on fields which are in this class.
+                         if we want super class variables to bi initialized, we need to create constructor manually.
+
+
+3. POJOs stands for = Plain Old Java Objects
+
+4. @Data  - @ToString , @EqualsAndHashCode , @Getter / @Setter and @RequiredArgsConstructor
+5. @AllArgsConstructor annotation generates a constructor with one parameter for every field in the class.
+6. @NoArgsConstructor annotation is used to generate the no-argument constructor for a class.
+
+7. There are common architecture in the market called - Three Layered Approach (3-Tier Approach)
+   3-Tier Approach = API layer -> Service layer -> Data layer  ----> it is backend
+                     UI layer is different layer, it's seperated.
+                     Angular/React+Spring
+
+   What we are doing in part-1 is:
+        Thymeleaf+Spring -------> UI -> Service -> Data
+
+  Inside service we cannot put all everything together, we need to create service layers.
+  After controller we need to go to Service Layer.
+  All these components communicate with each other. how? = Dependency, injection, connection links between those packages/classes.
+
+
+8. Whatever object we show to UI is different whatever object we save in DataBase.
+   eg. DTO goes to UI however entity goes to dataBase;
+   But, how this two can understand each other? in the middle there are 'Mappers' that helps in understanding each other.
+   DTO - > Mappers < - Entity/Model
+   DTO stands for - Data Transfer Object;
+   Whatever we see on UI is DTO;
+                           DTO ---> Mappers <---- Entity------------------------------
+                           |                                                         |
+                           |                                                         |
+                           V                                                         |
+          UI ------>- Controller ---> Service                                        |
+                          |                |                                         |
+                          |Model           |                                         |
+                          V                V                                         V
+                        View          Service Impl --------> Repository ---------> DataBase
+
+
+DTO goes to Controller, Service;
+Entity goes to Repository & Finally DataBase
+Model is interface which carries view.
+
+9. How we connect Controller and DataBase? -----> through the Service
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

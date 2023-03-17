@@ -37,9 +37,7 @@
 
 5. Iteration: th:each is used to achieve iteration
     Syntax:
-        for (String name:names){
-          sout(name);
-        }
+
 
      <ul>                                   //capture car eg. honda and ect
         <li th:each="car : ${cars}" th:text= "car"></li> //
@@ -133,3 +131,10 @@
          @NotEmpty --> Field shouldn't be ""
          @NotBlank --> Field shouldn't be "     "
 
+14. Converter Interface:
+    When we face the problem to convert eg. String to object, we can imply this ready interface.
+    If we are asked question if we faced or not difficulties, we can use ths example from our Ticketing App.
+        = Interface Import:
+          import org.springframework.core.convert.converter.Converter;
+
+15. If we have one object inside another object, we might need converter interface in our App.

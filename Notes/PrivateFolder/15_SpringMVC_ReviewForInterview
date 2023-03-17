@@ -1,0 +1,55 @@
+1. Spring MVC works with Java only, but not sure.
+
+2. What are the Spring Core?
+    - IoC;
+    - Dependency Injection;
+
+3. Spring MVC = It is a java framework which is used to build web-Applications.
+                It follows Model/View/Controller design patterns = MVC;
+
+4. Why do you use spring MVC in your application, for your project?
+   - Spring MVC uses MVC design pattern. It helps us to keep organized our codes Model, view and controller.
+   - It gives us maintainable, readable and clean codes.
+
+5. MVC design pattern:
+    What is Model?
+         = Contains the data of the whole application; It's a kind of bridge, between data and other part of application;
+            It represents data and business logic of the application.
+    What was the model in your ticketing project?
+         = I used DTO objects as a Model (Data Transfer Object); DTO can be used transferring the data between the different
+           layers.
+    What is Controller?:
+         =  Controller controls flow of the data; It handles user request and manages interaction between view and our codes;
+         =  Controller handles user requests and sends responses, it's in the center of the application;
+    How you make sure the class is Controller?
+         = We put class level annotation @Controller (when we put this annotation, Spring can understand that this class has
+           @Component annotation as well and we gonna have spring beans here).
+    Is there any difference between "@Service" and @Controller annotation?
+         = no difference, just the name difference. We use @Service mostly for Service classes.
+    What is view? What did you use in your project as a view?
+         = View handles data presentation to user in our application. Whatever we see on the screen.
+         = We use Thymeleaf as a view in my application.
+
+6. Front Controller?
+        = Dispatcher Servlet class works as front controller. It manages all our requests starting to the view side and
+          ending to the backend side.
+7. If you want to create endPoint you need to have a method in controller and put some annotation.
+   What are the differences between @GetMapping and @PostMapping?
+        = @GetMapping when we retrieve information/data from server;
+        = @PostMapping when we want to submit something into UI side.
+        = @RequestMapping = is used for creating initial endpoint, it's higher level. It in default @GetMapping
+          if we define inside get or post, we can use in method level as well. But best practice is to use whatever we are
+          looking for, e.g. @GetMapping if we retrieve data instead of @RequestMapping, as it is more specific and
+          @RequestMapping is more general;
+
+8. How to you validate your request coming through your app?
+   If we want to specify
+
+9. Is there any place try to retrieve some data with an ID?
+        = If we want to search something we use @PathVariable.
+    Can you use @RequestParam and what's the difference?
+    //project/task/1 @PathVariable
+    //project?task=1 @RequestParam
+
+10. What happens if we don't have @Controller?
+    return"" won't understand where to go and which view needs to show, from which file.

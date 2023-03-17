@@ -31,3 +31,5 @@ ${....} keep value
 
 10. Iterate
 <option  th:each="theState : ${stateList}"></option>
+
+11. readonly = when we want data to be only readable on UI side, no changes.

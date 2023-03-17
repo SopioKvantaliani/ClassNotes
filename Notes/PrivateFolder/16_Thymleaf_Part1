@@ -15,7 +15,7 @@
         -This tag is equivalent to an import in Java. It allows us further to use the prefix "th" to refer to specific features provided by Thymeleaf in the view.
 
 5. End-point:
-    1) Class level @RequestMappin ("/student")
+    1) Class level @RequestMapping ("/student")
     2) Method level @RequestMapping ("/register")
  Class level end-point will be concatenated with method name end-point.
 

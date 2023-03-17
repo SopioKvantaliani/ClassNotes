@@ -597,3 +597,195 @@
     - In Java variables are passed to methods by values, not by reference.
     - Java passes variables to method by value, which means that any changes made to the variable within the method do not affect
       the original variable outside the method.
+
+68. Difference between throws and throw keyword?
+    throws = is used in the method signature to indicate that the method may throw one or more exceptions. This allows the
+    caller of the method to handle or propagate the exception.
+    throw = is used to explicitly throw an exception from a method or block of code;
+
+69. Why do we need to finally block?
+    The finally block always executes when the try block exits. This ensures that the finally block is executed
+    even if an unexpected exception occurs. But finally is useful for more than just exception handling — it
+    allows the programmer to avoid having cleanup code accidentally bypassed by a return, continue, or break.
+    Putting cleanup code in a finally block is always a good practice, even when no exceptions are anticipated.
+    The finally block is a key tool for preventing resource leaks. When closing a file or
+    otherwise recovering resources, place the code in a finally block to ensure that resource is always
+    recovered.
+
+
+                    e.g. try {
+                         //body
+                    } catch (IndexOutOfBoundsException e) {
+                        //body
+                    } catch (IOException e){
+                      //body
+                    }finally {
+                      //body
+                    }
+
+
+70. Can you catch more than one type of exception in a single catch block?
+    In Java SE 7 and later, a single catch block can handle more than one type of exception. This feature can
+    reduce code duplication.
+    In the catch clause, specify the types of exceptions that block can handle, and separate each exception
+    type with a vertical bar (|):
+                    catch (IOException|SQLException ex) {
+                     logger.log(ex);
+                     throw ex;
+                    }
+
+71. Can you have multiple catch blocks?
+    Yes we can have. Each catch block handles a specific exception.
+
+72. Is try without catch and finally allowed?
+    No, try needs at least one of them. Otherwise JVM would give a Compilation Error!! (End of try block)
+
+73. Can you try and finally block without the catch block in java programming language?
+    Yes, we can have a finally block without the catch block.
+
+74.What happens when a catch block throws an exception?
+   When an exception is thrown in the catch block, the program stops the execution.
+
+75. How can you stop finally block from being executed?
+     Finally block, always runs (even we put “return” keyword inside the catch block) except system is
+     terminated by:
+     • System.exit(0); in the catch block.
+     • JVM crash.
+
+76.  What is the difference between final, finally and finalize?
+     • Final : keyword. Can be used for variables, methods, and classes.
+     • Finally : block, can be used only with try & catch blocks. Always gets executed regardless of the
+       exception.
+     • Finalize: method, garbage collector uses before destroying the unreferenced objects. Implicitly done.
+
+
+77. How do you create a Custom Exception?
+    Yes we can create our own exceptions, customized according to user needs, derived from classes of the Exception class.
+    We can create custom exceptions by extending the Exception or RuntimeException class, depending on whether we want
+    our exception to be checked or unchecked.
+
+78. How do you throw an exception from a method?
+    Let’s assume that we have a method named addAmounts in Class AmountAdder which adds amounts. If
+    amounts are of different currencies, it throws an exception by using throw keyword.
+                method:
+                static Amount addAmounts(Amount amount1, Amount amount2) {
+                if (!amount1.currency.equals(amount2.currency)) {
+                throw new RuntimeException("Currencies don't match");
+                }
+                return new Amount(amount1.currency, amount1.amount + amount2.amount);
+                }
+               }
+               public cl
+
+79. Do you remember any method of Exception class?
+    printStackTrace(): prints the stack trace of the exception.
+    getMessage(): returns the detail message of the exception.
+    getStackTrace(): returns an array of stack trace elements, each representing one stack frame.
+    getCause(): returns the cause of the exception.
+
+80.What could be the reason if you are getting NullPointerException?
+       • Attempting to invoke a method on a null reference (we cannot call any method or variable with this
+          variable).
+       • Attempting to access or modify an instance variable of a null reference (null keyword doesn’t refer
+         to any object).
+       • Attempting to use an uninitialized variable.
+       • Passing a null reference to a method that does not allow null values.
+       • Attempting to auto-unbox a null object.
+
+81. What is class cast exception?
+    -- There must be IS-A relationship between classes
+    -- If you try to down cast one reference type to another without IS-A relationship, you get this
+       exception.
+
+82.Can you explain the hierarchy of Exception Handling classes?
+   Throwable is the highest level of Error handling classes.
+   ● class Error extends Throwable{}
+   ● class Exception extends Throwable {}
+   ● class RuntimeException extends Exception {}
+
+
+83. What is @Component and @ComponentScan?
+    - We mark class with @Component which we want Spring to create and manage objects and add an instance into its context;
+    - We mark configuration class with @ComponentScan to tell Spring where to find the classes you
+      marked for being managed by the framework.
+    - Stereotype annotations can be only used for classes that we can change:
+        @Component --> @Controller--> @Service --> @Repository
+
+84. What is @Configuration?
+    - We use this annotation to identify configuration class.
+    -  A configuration class is a class that provides configuration information to the Spring container.
+    - It is used to define beans, wire dependencies between beans, and configure other aspects of the
+      Spring application context.
+
+85. How to add beans to Spring context via annotation?
+   there are 2 ways:
+    1. @Configuration claas we declare methods that return objects.
+       @Bean - we use method level annotation
+
+    2. Using stereotype annotations (@Component, @Service, @Repository, @Controller)
+
+86. What is the difference between @Bean and Stereotype Annotations?
+      ● Stereotype is class-level annotations, @Bean is method level
+      ● Stereotype annotations only for custom made class. @Bean can be always used.
+
+87. What is a dependency?
+    Relationship between two components of a software system, where one component has a relationship with another.
+
+88. What is dependency injection (DI)?
+    DI is a core concept in Spring.
+    Instead of creating an object's dependencies internally, inside each class, the dependencies are "injected"
+    from the outside.
+    DI reduced boilerplate codes and helped developers to create modular, maintainable, and testable code.
+
+89. How do you implement dependency injection (DI) in Spring?
+    There are 3 ways in which we can use the @Autowired annotation:
+      = Constructor injection (best practice)
+      = Setter Injection
+      = filed injection
+
+90. What is Auto Wiring?
+    Auto Wiring and DI is related concepts but they are different. DI is a patter in which the dependencies
+    of a class are injected into it from the outside, rather than being created inside the class itself.
+    DI allows loose coupling.
+
+    AutoWiring on the other hand, is a mechanism in Spring that facilitates dependency injection.
+
+91. What does @Autowired signify?
+    Spring @Autowired annotation is used for automatic dependency injection.
+    When a bean is
+    annotated with @Autowired, Spring will automatically search for a bean of the same type and inject it into the
+    bean that is being created.
+
+92. What is “@Primary”?
+    If more than one bean of the same type is available in the container, the framework will throw
+    NoUniqueBeanDefinitionException indicating that more than one bean is available for auto wiring. With
+    @Primary, we give higher preference to a bean when there are multiple beans available of the same type.
+
+93.What is “@Qualifier”?
+   @Qualifier annotation along with @Autowired can be used to remove the confusion by specifying which
+   exact bean will be wired.
+
+94.What is the difference between @Primary and @Qualifier annotations?
+   @Qualifier is very specific, we can identify more than one bean with @Qualifier, while @Primary give preference only
+   one bean and defines it default.
+
+95. What is the default scope of a bean?
+    there are 2 type of scopes:
+        - Singleton which is default and everytime we request a reference Spring provides the same object.
+        - prototype: everytime we request a reference Spring creates a new object.
+
+96.What is the bean life cycle in Spring Bean Factory Container?
+   The lifecycle of any object means when & how it is instantiated and when and how it is destroyed.
+   When we run the program been instances are instantiated and finally, the bean is destroyed when the spring
+   container is closed.
+   Overview how Spring manages the lifecycle of a bean:
+        - Bean instantiation:
+        - Dependency injection
+        - Initialization when spring calls any methods
+        - Ready to use - once initialization is complete
+        - Destruction - when application is shutting down.
+
+97.Are Spring beans thread safe?
+   The thread-safety of Spring beans depends on their scope and implementation.
+   e.g Singleton which means that there is only one instance of the bean in the application context.
+       Singleton beans are shared among multiple-threads and their thread safety is depends on their implementation.

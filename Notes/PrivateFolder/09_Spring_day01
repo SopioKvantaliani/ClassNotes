@@ -49,7 +49,7 @@ Spring
 6.1 - POJOs - is application classes (You need to create Java Classes);
 6.2 - Spring Container - You need to create Container. This container is the place where Spring creates and manage all the objects
                          for you whatever you describe in the configuration; This container will hold all the object that application
-                         needs; Container is a structure
+                         needs; Container is a structure.
 6.3 - Configuration - Spring needs configuration, because it will manage only classes and object whatever developers describe in configuration.
                        e.g. you have in total 1000 different class, spring needs to know the exact configuration it need to take care;
                        It is the place where we define which objects should be created from which classes.
