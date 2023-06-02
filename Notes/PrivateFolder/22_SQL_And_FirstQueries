@@ -1,0 +1,154 @@
+
+1. What is Data?
+   In databases we store data in an organized manner
+   It is secure, easy to ready, fast to read and fast to update;
+
+2.  What is database?
+    Database is a systematic collection of data.
+    Database make data management easy.
+
+3. Relational Database (Most usable and popular)
+   Organize that data in a series of tables; Connected different tables with primary and foreign keys.
+   Foreign key is primary key on it own table, but it becomes foreign in different table.
+
+4.  Two Important rules:
+    Primary key can not be duplicate and can not be null;
+    Primary Key is e.g. Employee_Id, unique identification
+
+5.  What is Foreign Key
+    Foreign key is primary key, but used in different table to connect different tables.
+    Foreign can be duplicate in other table;
+    e.g. Department Id is primary key in Department's table, however if we use it in Employees table it can be Foreign Key.
+
+6. Non Relational Database (another type of database, we don't learn)
+   All data are in Key & Value format.
+
+7. RDBMS -> Relational Database Management System
+   All RDMS using SQL Language
+   SQL language is not case sensitive, we can write lower or upper case letter.
+
+8. What is SQL?
+   SQL -> Structured Query Language
+   SQL is a language that is used to work with Databases and manipulate data.
+
+9. --How to test:
+   SELECT * From employees;
+   Purple word are key words;
+   Starting "Select" - We only retrieve the info from DataBase;
+   " * " star means  - Select ALL, Select Everything.
+
+   --How to retrieve specific column:
+   Select first_name from employees; (here we try to retrieve first name)
+
+   -- how to see unique first names (remove duplicate values)
+   select distinct first_name from employees;
+
+   --How to filter
+   Where condition (logical operators =, <, >, and, or)
+
+   --find match
+   ILIKE case insensitive; LIKE case sensitive
+
+   --SubQuery: 1st inner query executes and then outer query. you can combine more then 2 combine;
+    select *
+    from employees
+    where salary = (select max (salary) from employees);
+
+    offset --skip couple of rows based on what you provide;
+    limit  -- show just one, we limit how many we need to see.
+    Order by - sort with salary, name and etc.
+    Distinct - remove duplicate, unique
+
+10. How To Create DataBase?
+    Right click on Database -> Save Name (HR)
+    Right click on HR -> Query Tool copy data -> Select everything and RUN
+    Then delete everything and TEST
+    SELECT * From employees;
+
+11. How to delete dataBase?
+    you can first close the open query tool by right clicking on the tab->remove panel.
+    Then quit and reopen your pgAdmin, then right click on HR->Delete/Drop in pgAdmin.
+
+12.Virtual Tables
+   To store tables -> Create view EmailList As (... and then standard code request)
+
+13. DDL & DML
+      =Data Definition Language (DDL) / it is used to define data structures
+    Create
+    Drop
+    Truncate
+    Alter
+
+      =Data Manipulation Language (DML) / it is used to define data itself
+    Select
+    Insert
+    Update
+    Delete
+
+14. Column Constraints
+        .NOT NULL - value of the column cannot be null
+        .UNIQUE - value of the column must be unique
+        .PRIMARY KEY - Not NULL and UNIQUE, e.g. ID
+        .REFERENCES - OtherTable (PKColumn) used to give foreign key to the column as  the reference column.
+
+15. Syntax for creating table
+ Create table syntax:
+    create table TableName (
+        colName1 DataType Constraints,
+        colName2 DataType Constraints (Optional)
+        colName3 DataType Constraints
+        );
+
+16. How to insert columns in the table
+/*
+ INSERT INTO tableName (column1, column2, ...)
+ VALUES (value1, value2);
+ */
+
+17. Update Columns in a table, whole column or specific records;
+    Update table_name           update scrumteam
+    Set column1=value1,         set jobtitle = 'DevOps'
+        column2=value2,...
+        where condition;        where Emp_ID = 4;
+
+18. To change existing table structure use "Alter" key word
+    Syntax:
+    Alter table table_name action;
+
+19. Join 2 tables' column and filter
+    Syntax:
+    select first_name, last_name, address, phone
+    from customer join address
+    on customer.address_id = address.address_id;
+
+20.left outer join / right outer join = reunite 2 different columns
+
+21. when from the same table we connect 2 columns -> Self JOIN
+
+22. Set operators and why we need them?
+    -There are 4 type of Set Operators:
+       We need to have same number of columns.
+     UNION - operator combines result sets of two or more select statements into a single result set (Removes duplicates, sorts results)
+     UNION ALL - combines result sets as it is.
+     INTERSECT - set operators returns records that are present/common for the tables we are merge.
+     EXCEPT - set operator returns records from first query that is not present in second query.
+
+23. INDEX
+        A database 'Index' is a data structure that improves the speed of data retrieval.
+        Syntax for creating INDEX:
+            create index idx_tableName_columnName ON towns (name);
+
+24. Functions
+    Functions work as methods in Java, has special syntax. Based on the logic it returns some value.
+    With functions you can just retrieve values, no data manipulation is available.
+
+25. TRIGGGER
+    A PostgresSQL Trigger is a function invoked automatically whenever an event such as insert, update, or delete occurs.
+
+    Trigger Operations:
+        Create Trigger
+        Drop Trigger
+        Alter Trigger
+        Disable Trigger
+        Enable Trigger
+

@@ -1,0 +1,7 @@
+
+1) Open Feign dependency (consuming API)
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <version>3.1.5</version>
+        </dependency>

@@ -1,0 +1,37 @@
+
+---------------------------------------------------Spring Security -----------------------
+Schedule what is left:
+    - Spring Security - Authorization, Authentication
+    - API Introduction
+    - Spring API
+    - Spring Security
+    - Spring AOP (Aspect Oriented Programming )
+    - DevOps - How to deploy codes
+    - MicroServices
+
+Building security configuration is one time job and than we can copy-paste it.
+
+Steps what we need to do:
+    1) Security Dependency
+          <dependency>
+                 <groupId>org.springframework.boot</groupId>
+                 <artifactId>spring-boot-starter-security</artifactId>
+          </dependency>
+    2) Run application and copy password:
+
+       When we run program, we see Encoded password, which was done by Spring behind the seen automatically.
+       Using generated security password: 506af03e-52f3-4de8-8c68-53b28fe32157
+
+What Spring does automatically behind the scene:
+    - Encoded Password - Spring already created encoded password
+    - Authentication Form by Spring - Spring already gave one authentication form (username / password)
+    - User Object -> username/password already belongs to one object, created by spring behind the scene. But where is that object?
+
+We need to overwrite these 3 steps, to be in connection with our app data. We need to convert everything for our application.
+
+How I can encode my passwords (meaning I put in the UI password ABC, in the database is gonna be saved as an encoded. how to do that one?);
+
+Both hasRole() and hasAuthority() are used to control access to resources based on the user's
+       roles and permissions, but they work differently and have different use cases.
+       hasRole() is typically used for role-based access control, while hasAuthority() is
+       typically used for permission-based access control.

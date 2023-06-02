@@ -1,0 +1,22 @@
+1. User Request
+LocalHost:8080/user/create
+
+2. Controller
+
+@Controller
+@RequestMapping
+public class UserController {
+
+}
+
+How Java decides which controller request need to call?
+We need to find endPoint and then it will find the controller.
+
+3. Injection in Controller
+What's the point of Injection?
+We want to access methods of injected class.
+Also, Spring can manage and create beans and inject when needed.
+
+3. DTO
+Model parameter = if you want pass any data to pass to UI side, we need special structure. By using Model interface I can pass my data to view or DB.
+

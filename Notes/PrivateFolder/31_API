@@ -1,0 +1,293 @@
+
+API's Usage:
+    1)  API's first usage is sharing information between the application. API is built on top of the data base.
+        Whoever is building application, they create the documentation that helps other applications to communicate
+        with required software. e.g. skycanner.com
+        API is also called web service.
+
+        examples: signing with gmail account on Airbnb, obtaining weather information from Accua weather, sky-scanner.com gathering information
+        from different airplane companies, gameStop.com using world map from google to show locations.
+
+    2) API's second usage is sharing information between your own platforms, e.g. Amazon web - > Amazon desktop, Amazon App
+       Also, microservices is another usage (we'll cover later);
+
+How the data exchange between different applications?
+  = JSON's main purpose is to carry information back and forth between applications, sharing information between the application.
+
+There're 2 types of API:
+ - SOAP (Simple Object Access Protocol) - > Communication happens in XML format (Tags)
+ Request example:
+    <tripreq>
+        <source_city>DC</source_city>
+        <date>1/1/2016</date>
+     </tripreq>
+ - Rest (Representational State of Transfer) -> Communication happens through HTTP protocol in JASON or XML format.
+
+
+What is an API testing?
+    - API testing concentrates mainly on the business logic layer of the software architecture.
+      This testing won't concentrate on the look and feel of an application.
+
+    - Instead of using standard user inputs and outputs (via keyboard), in API testing, your use software to send calls to the API,
+      get output, and note down the system's response.
+
+HTTP Requests
+    - GET - Retrieves the data
+    - POST - Sends new data
+    - PUT - Updates info
+    - DELETE - Removes data from a specified source.
+
+How to send a request?
+    - Each Rest API has endpoint/URLs/URIs
+    - Builders of API will create public URLs. And Request are sent to that url
+
+Swagger is the documentation mostly used type for APIs.
+
+2XX error codes = everything works fine;
+4XX error codes = something wrong on clients side. e.g. asking info that do not exist.
+5XX error codes = server problem. e.g. site received users than was expected.
+
+As a response we got 3 MAIN parts:
+    = Status Code
+    = BODY
+    = HEADER
+
+What is JSON?
+    = Javascript Object Notation
+    = Key value pair to represent data
+    = Key wil be always String.
+    = Values can be: String, Number, Boolean, null, Array, JSON object;
+
+example:
+//{} mean new object.
+{
+"firstName":"Mike",
+"lastName": "Smith",
+"Age":25,
+"isMarried":false,
+"job":null,
+"hobbies":["reading", "traveling", swimming]
+"address":{
+         "street": "Jones Branch",
+         "zipcode":"22101",
+         "state":"VA"
+         "phone":{
+            "mobile":"2349876"
+            "work":"42984756098"
+         }
+      }
+}
+
+
+
+HEADERS:
+Additional information about REQUEST and RESPONSE
+like a map, key value format
+what we send with headers?
+    - Data types (application / json, xml text ect)
+    - credentials (username, password, token, key)
+
+Request Headers:
+    = Accept, application/json -> hey API, please send me json response.
+    = Accept, application/sml -> hey API, please send me xml body.
+
+ Response Header:
+    - Content-type, application/json--> hey client, I am sending you json body/payload
+    - Content-type, application/xml --> hey api I am sending you xml response;
+
+Parameters are options you can pass with the endpoint (such as specifying the response format or the amount returned)
+    2 Types of Parameters:
+        1. Query Parameters
+        2. Path Parameters
+
+1. Path Parameters
+    It is a part of the ufl and followed by endpoint
+            baseurl/api/spartans/{id}
+            {id} --> path parameter
+            when we see {} --> we understand that there is path parameter
+
+            if you add :id to your url in postman it will create path variables
+            part under the Params tab. You can change the id value from there too without changing the url
+
+2. Query Parameters
+    It is NOT part of the url and passed in key=value format.
+    ? --> means end of the url
+    & --> add another query parameters, seperate query parameters
+
+https://www.amazon.com/s? k=java+book
+&
+crid=12Z1YY1L9O2TT
+&
+sprefix=java+book%2Caps%2C80
+&
+ref=nb_sb_noss_1
+
+--------------------------------------------------------------------
+
+How to save baseUrl?
+    IP --> set as variable --> set as a new variable (name it; scope choose Global)
+
+HTTP REQUEST TYPES:
+    GET --> read, retrieve, get data from the api
+    POST --> create, add new information for the first time
+    PUT -> update existing information
+    PATCH --> partial update existing information
+    DELETE --> remove, delete existing information
+----------------------------------------------------------------------------------------------------------
+POST METHOD
+    We use it to create something, we learned how to use it based on documentation of api.
+
+PART OF POST REQUEST
+    - BaseUrl+Endpoint
+    - Request BODY
+        {
+                "name": "Harold Finch",
+                "gender": "Male",
+                "phone": 2093485556
+        }
+
+    - Request Headers
+        - Content -type, application/json --> hey api, I am sending you Json request body
+        - Accept, application/json --> hey api, I want Json response from you
+        - Auth
+
+-Query or path parameter still possible buy we dont have in spartan example.
+PART OF THE POST RESPONSE
+	-Status Code -> Almost always it will be 201 for post request, but it can be 200 too or sth else.
+	-Headers --> similar to get request
+	-body
+		-some successful message to show we post correctly
+		-same data that we send most of the time, also some id info if it is auto generated
+
+------------------------------------
+PUT Request
+we use put request to update existing record, for spartan api we had following request and response structure
+
+PART OF PUT REQUEST
+	-BaseUrl+Endpoint/{id}
+	-Path Parameter --> to twll which spartan we want to update
+	-Request JSON BODY -> we provide 3 of the keys even if we only update one of them
+		{
+		  "phone": 2024234432,
+		  "gender": "Male",
+		  "name": "Harold Finch"
+
+		}
+	-headers
+		-Content-type,application/json --> hey api, I AM SENDING YOU JSON REQUEST BODY
+		-Auth
+		we didnt include Accept header, the reason is we get 204 for spartan put request which means it is successful
+		but there is no response body in return. since we are not getting any response body, there is no point to ask json response from api.
+
+PART OF THE PUT RESPONSE
+	-Status Code --> 204 No Content --> for spartan we got this, it means no response body but it is successful
+	-header -> custom headers, but no content type header because we didnt get any response body
+
+PUT vs PATCH
+	they both update the result basically existing information the only difference between them is while we updating
+	even one value form json, with PUT request we HAVE TO provide full json body for that request. But when we use PATCH
+	request we do NOT need to provide the fields that we will NOT change. we can only put json key that we want ot update and it will work.
+	For spartan API PATCH request also return 204.
+
+--------------------------------------
+
+public class Customer{
+
+	private String firstName;
+	private String lastName
+	private String email;
+
+}
+
+{
+	"firstName":"Mike",
+	"lastName" :"Smith,
+	"email" :"mike@cydeo.com"
+}
+
+JAVA(Collection,POJO,DTOs) ---> JSON
+Serialization
+
+Jackson/Gson --> library, dependency to make this conversion happen
+those are libraries to deserialization and serialization. they are also known as objectMapper,json-parser, data-binding libraries.
+We will have jackson included in springboot dependencies.
+
+GET -- api.cydeo.com/customer/123
+
+POST -- api.cydeo.com/customer
+	{
+		"firstName":"Harold",
+		"lastName" :"Finch,
+		"email" :"mike@cydeo.com"
+	}
+
+Deserialization : JSON to JAVA(Collection or POJO or DTO)
+
+
+{
+	"request":"successful",
+	"totalCustomer":1
+	"data":{
+			"firstName":"Harold",
+			"lastName" :"Finch,
+			"email" :"mike@cydeo.com"
+		}
+
+
+}
+------------------------------------------------
+TOMORROW -> Mentoring Session
+WEDNESDAY -> OFF
+Thursday,Friday -> OFF
+
+Sunday-> Classes start
+------------------------------------------------
+AUTHENTICATION and AUTHORIZATION
+
+AUTHENTICATION --> verifies if you are who you say you are
+
+AUTHORIZATION --> valid credentials, verifies if you have access/permission to certain actions
+
+admin
+admin
+
+editor
+editor
+
+user
+user
+
+
+401--> invalid credentials, no credentials, api does not know who you are ??
+
+403 --> valid credentials, api knows us but not enough access level/ permission to do action
+
+Spartan running at port 7000 uses basic auth. we can send our username and password by clicking authorization tab
+on the postman and select Basic Auth
+
+for spartan application we have 3 different types of users. admin admin, editor editor,user user.
+all of them have different permission which is defined in the documentation.
+for example delete action can be only performed by admin user. if we dont provide any username and password,
+api will sent us 401 because api doesnt know anything about us. but if we provide credentials
+but ask something that we dont have right to do, we will get 403 forbidden which means api
+knows who we are but we dont have right to do that action.
+
+This is all about API Introduction.
+
+Best,
+
+Jamal
+
+
+Developer roles
+
+Sky-scanner Dev Role(Using,Consuming from other APIs)
+- Get information from UI(WebPage)
+    for example: departure,return, dates, number of adults
+-Send Request to airlines(united,delta etc) to get available flights and prices
+(they consume the airlines api, send request and get response to built their own page)
+-After get the response, built your own page, with prices etc.
+
+United Airlines Dev Role(Building API)
+you are the one who is building api with database, services, controller etc.
+you will provide documentation to others, they will be using your api.

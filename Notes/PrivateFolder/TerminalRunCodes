@@ -2,3 +2,15 @@
 
 kill -9 $(lsof -ti:8080) - Run in Terminal when port 8080 doesn't work.
 ping.google.com =
+
+ = Source to prepare presentation (Diagrams, Relationships e.g. )
+jhipster.tech/jdl-studio/
+JDL-Studio
+
+ = To SetUp Tables in DB
+   DZone = is very nice webSite, which helps to design tables in SqlData
+
+spring.jpa.hibernate.ddl-auto=update - in the properties file, helps to configure table-Db connection.
+
+To reformat code in IntelliJ, you can use the following shortcut: macOS: Cmd + Option + L
+

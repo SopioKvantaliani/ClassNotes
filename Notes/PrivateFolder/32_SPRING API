@@ -1,0 +1,184 @@
+
+What we learned and what is left?
+    SPRING CORE = DONE
+        - IoC, DI
+
+    SPRING MVC = DONE
+
+    SPRING DATA = DONE
+
+    SPRING SECURITY (UI) = DONE
+
+    SPRING API/REST = In Process
+
+    AOP+Logging = In Process
+
+    Spring Testing : Junit5 + Unit Testing + Integration Testing = In Process
+
+    Deployment = We will learn certain basic things (what is doker, what is amazon web service, what is continues development) = In Process
+
+    Microservices = In Process
+
+    Kafka = In Process (new subject, top of Microservices, it's a architecture)
+
+
+--------------------------------------------   SPRING API    -----------------------------------------------------------------------
+
+SPRING API/REST
+    - Creating APIs
+    - Jackson --> converting java classes into JSON. Spring Boot doing it automatically.
+    - Consuming APIs --> it makes the UI and BackEnd Layer Seperated.
+    - Security, OAuth2 (KeyCloak) --> we need to secure API part whatever we do. Should be accessible only by admin
+    - Exceptional Handling --> e.g. wrong input was "put/post", we need to handle exception
+    - Documentation (Swagger, Open API (Swagger 3 version is called Open API))
+
+Framework:
+    MVC + DATA + API --> UI (ANGULAR)
+                     --> Mobile
+
+STEPS TO IMPLEMENT REST SERVICE:
+--> To implement SPRING MVC we need SPRING WEB DEPENDENCY.
+--> REST endpoints are as simple as implementing a controller action.
+--> Map to an HTTP method and a path ( GET, POST, PUT...)
+    --> EndPoint is called a web service (is the same as API development);
+--> @ResponseBody annotation tells the dispatcher servlet that the controller's action does not return view name,
+    but directly it returns data in JSON format, as HTTP response.
+
+--> @RestController  annotation is a combination of @Controller and @ResponseBody
+
+--> HTTP methods are GET / POST / DELETE / PUT / PATCH ...
+
+--------------------------------------------  Consuming API    -----------------------------------------------------------------------
+
+Consuming API = there are 3 different ways:
+    - RestTemplate -> will be deprecated soon
+    - Feign Client -> mostly used by companies, produced by Netflix
+    - Web Client -> requires Reactive Programming
+
+Steps implementing RestTemplate:
+    1. Annotate class with @RestController
+                           @RequestMapping("/cydeo")
+    2. Declare URI instance, It is a String characters that identifies a particular resource on the internet.
+    3. Inject Dependency - RestTemplate restTemplate;
+    4. Syntax:
+
+
+Steps implementing Feign Client:
+    1. Put Dependency - Open Feign
+    2. @EnableFeignClient class level annotation in the runner class
+    3. write "client" interface, to describe how to consume the API endpoints.
+    4. @RequestHeader -> if you want to
+
+
+
+Sync vs Async in API
+  1. Sync means when request come after another. First request served, then comes another and so on
+  2. Async means when at the same time comes multiple requests and are served.
+
+WebClient:
+    1. What is Reactive Programming ?
+    2. How Java providing Reactive Programming, Mono/Flex?
+    3. How you consume Reactive APIs with the webClient?
+    4. How We are creating WebClient?
+        4.1 Creating instance -> Webclient webclient
+        4.2 following body syntax:
+               @GetMapping("/flux")
+               public Flux<MovieCinemaDTO> readWithWebClient(){
+                   return webClient //to consume we use webClient
+                           .get()
+                           .uri("/flux-movie-cinemas")
+                           .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                           .retrieve()
+                           .bodyToFlux(MovieCinemaDTO.class);
+               }
+
+
+--------------------------------------------  OpenAPI   -----------------------------------------------------------------------
+
+OpenAPI Specification (OAS)
+ --> OAS, formerly known as the Swagger Specification, is the world's standard for defining Restful interfaces.
+ --> OAS enables developers to design technology-agnostic API interface
+
+How to create OpenAPI specification (OAS):
+ 1. We will need YAML or JSON, one of them.
+ YAML, file extensions are .yaml / .yml File; It is built on top of JSON.
+ It is a human-readable data serialization format.  YAML is designed to be simple and easy to read by both humans and machines.
+
+ Examples:
+
+    apis:
+        - name: login
+          port: 8080
+        - name: profile
+          port: 8090
+ JSON:
+    {
+     "apis": [
+     {
+     "name":"login",
+     "port": 8080
+     },
+     {
+      "name":"login",
+      "port": 8090
+     }
+     ]
+    }
+
+YAML file rules:
+    comments: #Added by API Auto Mocking Plugin
+
+    Naming Conventions: employeeId: "1"
+                        employeeName: 'abc'
+                        employeeEmail: skvantaliani@gmail.com
+
+    Creating Array obj: array1:
+                          - value1
+                          - value2
+                          - value3
+
+                          array1: [value1, value2, value3]
+
+
+When creating API in Swagger Hub, some notes to remember:
+    1. Version = we can put any numbers, doesn't matter
+
+-------------------------------------------- Security, OAuth2 (Keycloak)   -----------------------------------------------------------------------
+
+- Concept OAuth2
+- Keycloak installation, configurations
+- Spring Boot + Keycloak Implementation
+
+Steps:
+    Authentication --> Who are you?
+    Authorization --> What permissions do you have?
+ Problem before OAuth2
+    - was passing password/username in header to get information from server. Sharing password in Header is not a good way.
+    - Sharing password with third party (e.g. printing service, imagine you want to print the photo and you has to share your password
+                                          with third party printing service)
+
+What is Oauth 2.0?
+     - OAuth = Open + Authorization
+     - Oauth 2.0 is an Authorization Framework
+     - Oauth is a delegated authorization framework.
+     - Oauth token behaves as an "access card" at office. These tokens provides a limited access to someone, without
+       handing over full control in the form of the master key.
+     - OAuth 2.0 structure is when one time you authorize user, there is no more need to authorize (example google and all google products)
+
+Different Oauth Providers:
+    - Keycloak --> java developers use to create Oauth for backend  portion, with the APIs. It's open source.
+    - Instagram
+    - Amazon
+    - Facebook
+    - Dropbox
+    - Github
+    - Google
+    - LinkedIn
+    - Microsoft
+    - Paypal
+    - Twitter
+
+How Oauth 2.0 works? What are components?
+    -
+
+

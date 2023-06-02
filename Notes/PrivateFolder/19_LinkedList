@@ -1,0 +1,78 @@
+
+1. node = Nodes are a basic data structure which contain data and one or more links to other nodes.
+          Nodes can be used to represent a tree structure or a linked list. In such structures where
+          nodes are used, it is possible to traverse from one node to another node.
+
+
+1. LinkedList is aware what is the following element's address, not before it.
+   LinkedList elements are not following each other in sequence, one element know the address to the following element
+   and so on.
+
+2. We can have address in our class of another class and using that address we can go from one to another.
+
+3. There are 2 cases with the insertion operation on the List: List is empty and List isn't empty.
+   Empty isn't = jump into the tail and next.tail will be new node;
+   Empty List = head and tail will be null;
+
+4. Starting iteration from the beginning to the end Big O-Notation is O(n)
+   If we insert in the end or in the beginning Runtime complexity would be O(1); in the middle O(n)+O(1)=O(n);
+   Finding an element in LinkedList or in ArrayList is O(n);
+   Deleting LinkedList = 3 different case -> delete head, delete middle or delete tail. Important to know which item we are
+                         deleting.
+                         If Head -> O(1) runtime complexity; head=current.next, size should be decreased;
+                         In the middle -> O(n) runtime complexity;
+                            1. Iterate to the Node you'll delete;
+                            2. Before jumping to the next, assign current to temp
+                            3. Assign previous to current;
+                            4. Assign current to current.next;
+                         At the end -> Runtime complexity is O(n)
+                                       1. keep previous value
+                                       2. Assign previous as a Tail
+                                       3. Assign previous next to null
+
+5. Singly Linked List = from left to right goes and checks only. It cannot check backward; here we have only one address which
+                        refers to the next element
+   Double Linked List = It can check previous and next element: current.previous & current.next methods.
+                        Space complexity is more here.
+   Circular Linked List  = Tail points to head, so it is circular.
+
+6. ArrayList when is full it grows capacity by 50%. However LinkedList just adds that requested amount.
+   e.g. ArrayList has 1million data and we want to add 1 element, size will grow by 50%, so the new size will become
+   1.5 million, when in case of LinkedList the new size will be 1 million+1.
+
+7. If we want to insert an element in ArrayList it will shift the data and complexity is O(n), O of 1 million.
+   But in LinkedList, insertion time complexity is O(1);
+
+8. Operation  - > TIme Complexity
+    Add item - > O(1)
+    Add item to first ->O(1)
+    Add item in middle -> O(n)
+    Delete last item -> O(n) single, O(1)double
+    Delete an item with a value -> O(n)
+    Access an index (indexOf()) -> O(n)
+    look up (search) -> O(n)
+
+9. Is LinkedLIst considered linear or non-linear Data Structures?
+   It is considered Linear data structure, as you are accessing elements in an order. In some cases you can structure
+   as nonlinear, but 99% it is linear.
+
+10. What are the advantages of a Linked List over an Array? In which scenarios do we use LInked List and when Array?
+    Pros of Linked List over Array:
+        - Insertion and Deletion easier in LinkedList. In Array we need to do shifting of Elements while in LinkedList
+          we can directly insert elements in the end or middle.
+        - Dynamic Data structure:LinkedList is dynamic data structure, I don't occupy space I don't need. However,
+          size is limited in an Array as the n umber of elements is statically stored in the main memory.
+        - No wastage of memory in LinkedList; E.g if we declare Array with 10 elements and we use 5, we can directly
+          declare exact size Linked list and increase per request;
+11. What are the scenarios where we use linked list over array are:
+        - When we know upper limit on the number of elements in advance
+        - When there are a large number of add or remove operations
+        - When there are no large number of random access to elements
+        - when we want insert elements in the middle of the list
+
+12. Why we need tail?
+    We can survive without tail, but if we know tail we can add/delete element without iteration.
+
+13. 1) Tail.next = Node12 -> when we insert element at the end of the list
+    2) Tail = Node12   -> we need to assign tail to the new element to have the new tail.
+

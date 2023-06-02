@@ -1,0 +1,45 @@
+
+SQL ( Structured Query Language) : Standardization
+
+TSQL
+MySQL
+PostreSQL
+OracleDB
+
+Select * from table
+
+RDMS (Relational Database Management System)  - SQL is used system to make relationship between tables.
+
+NoSQL vs RDMS = Speed
+
+Why do we need several relational dataBase?
+
+
+What are different types of relationships in SQL?
+OneToOne, OneToMany, ManyToOne, ManyToMany
+
+If you want to start application, how you design your data base?
+
+Normalization in data management -> important in designing data base. What is your motivation to separate tables.
+
+Why Hibernate?
+Performance
+ORM
+Scalability
+Database Independent
+Caching -
+Lazy Loading
+Auto Generation
+
+fetchType - Lazy, Eager
+    = Lazy -> retrieve whenever called.
+    = Eager -> retrieve from DB immediately
+
+Steps when we retrieve data from db
+    1 - Create Session
+    2 - Prepare the request
+    3 - Make Request
+    4 Retrieve, Update, Insert
+    5 - Close the session
+
+    1st Level Cache

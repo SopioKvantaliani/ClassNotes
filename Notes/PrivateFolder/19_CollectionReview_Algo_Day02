@@ -3,8 +3,8 @@ Problem Definition
 1. Problem = Two Sum
    Example:
    input: nums=[2, 7, 11, 15], target=9
-   output: [0.1]
-   Explanation: Because nums [0]+ nums[1]==9, we return [0,1]
+   output: [0, 1]
+   Explanation: Because nums[0]+ nums[1]==9, we return [0,1]
 
    Understand the Problem:
    - Ask questions to interviewers!
@@ -20,7 +20,8 @@ Problem Definition
 
 3. What is the Collections Framework?
     - Collection in Java is a framework that provides an architecture to store and manipulate the group of objects.
-    - Java collections can achieve all the operations that you perform on a data such as searching, sorting, insertion, manipulation, and deletion.
+    - Java collections can achieve all the operations that you perform on a data such as searching, sorting,
+    insertion, manipulation, and deletion.
     - Interfaces
         =Set
         =List
@@ -59,7 +60,8 @@ Problem Definition
     - lastIndexOf(Object o) - Returns the index of the last occurrence. or -1 if the element isn't there.
 
 6. If we implement equals method, we need to implement hashCode too, this is the golden rule.
-   Why we need to implement? - to avoid unintentional error (e.g. if we don't override hashCode, Set collection might accepts duplicates);
+   Why we need to implement? - to avoid unintentional error (e.g. if we don't override hashCode, Set collection
+   might accepts duplicates);
 
 7. Set
     - Set is child interface of Collection
@@ -92,6 +94,8 @@ Problem Definition
 10. Difference Between HashMap and HashTable:
     - HashMap is a non-synchronized data structure. It is not thread-safe and cannot be shared across many threads without the use of synchronization code, while Hashtable
       is synchronized. It's thread-safe and can be used by several threads.
-    - HashMap supports one null key and ....
+    - HashMap supports one null key and null value;
+    - Hashtable does not allow null keys or null values. If you try to insert a null key or value
+      into a Hashtable, it will throw a NullPointerException.
 
-11. Difference Between HashMap and TreeMap
+11. List.of("Sophie", "Levan") = makes list immutable, we can't change it.

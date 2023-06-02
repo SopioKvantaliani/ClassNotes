@@ -1,0 +1,45 @@
+
+------------------------------------STACK----------------------------------------------
+1. Stack is the datatype. It is an ordered list in which insertion and deletion are done at one end, called top.
+    The last element insertion is the first element to be deleted. Remember plates example.
+
+2. Two main operation
+    When element is inserted = > push
+    When element is removed = > pop
+
+    Auxiliary stack operations:
+    peek() - returns the last inserted element without removing it
+    int size() - returns the number of elements
+    int isEmpty() - indicates any elements are stored in the stack or not
+    int isFull () - indicates the stack is full or not
+
+3. Infix, Postfix and Prefix Notations
+        Infix -> in the middle operation sign e.g. A+B
+        Postfix ->
+        Prefix - > operation sign is in the beginning of the notation. eg. +*AB/CD (means A+B/D)
+
+4. Performance
+   Time Complexity O(n)
+   Space Complexity:
+           push - O(1)
+           pop - O(1)
+           size - O(1)
+           isEmpty - O(1)
+           isFullStack - O(1)
+           deleteStack - O(1)
+
+5. Queue interface = First in First out (Printing doc eg.)
+   Deque extends Queue = used instead of Stack and considered much more affective by developer's community. First in Last out.
+
+6.Stack Key Takeaways
+    ->Last in First Out
+    -> Abstract Data Type (Business logic)
+    -> Can be implemented using Arrays/Linked List
+    -> Almost All operations run O(1)
+
+6. Recursion
+        A recursive function calls itself until a "Base Condition" is true and execution stops.
+        Any function/method calls itself is recursive.
+        Recursive code is generally shorter and easier, but requires too many calls.
+
+

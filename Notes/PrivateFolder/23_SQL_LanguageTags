@@ -1,0 +1,52 @@
+--get me all info who is working as IT_PROG
+select *
+from employees
+where job_id='IT_PROG';
+
+--how many people working as IT_PROG
+select count(*)
+from employees
+where job_id = 'IT_PRO';
+
+--how many employees are making more than 8000
+select count(*)
+from employees
+where salary >8000;
+
+--how many unique first names we have?
+select count(distinct first_name)
+from employees;
+
+select *
+from employees
+order by salary;
+
+--sort employees a-z
+select *
+from employees
+order by first_name;
+
+--sort job types
+select *
+from jobs;
+
+Select *
+from employees
+where job_id=9;
+--sorting salary low to high
+select * from departments;
+select * from employees
+order by salary;
+--sorting salary from high to low
+select * from departments;
+select * from employees
+order by salary desc ;
+
+select count(*)
+from employees;
+
+-- get me job_ids where their avg salary is more than 5K
+select job_id, avg(salary)
+from employees
+group by job_id
+having avg(salary) >5000;

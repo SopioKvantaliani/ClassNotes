@@ -42,8 +42,9 @@
           looking for, e.g. @GetMapping if we retrieve data instead of @RequestMapping, as it is more specific and
           @RequestMapping is more general;
 
-8. How to you validate your request coming through your app?
-   If we want to specify
+8. How do you validate your request coming through your app?
+   1step - Add validation dependency;
+   2step - Adding limitation on our DTOs;
 
 9. Is there any place try to retrieve some data with an ID?
         = If we want to search something we use @PathVariable.

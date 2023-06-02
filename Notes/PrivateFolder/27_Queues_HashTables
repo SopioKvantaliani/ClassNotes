@@ -1,0 +1,67 @@
+
+
+------------------------------- Queues ----------------------------------
+
+Used anywhere you process the jobs in the order you receive them:
+    - Web servers (Manage incoming requests by order)
+    - Printers (Use queues to manage printing jobs)
+    - Operating Systems (Manage processes, processes wait their turn to run)
+
+Request / Customer / Job ---> Back ----Waiting Queue ---Front ->  Service
+
+Queues' logic is First In First Out (FIFO); First comes, get service first.
+
+Performance -> Runtime Complexity  O(1) --> new entry in the queue, dequeue (Removing), peek, isEmpty, isFull
+
+Implementation of Queues:
+    - ArrayDeque,
+    - Priority Queue - > returns Ascending order
+
+Queues is an Abstract Data Structure, which means we require for business logics and in order to use Queue, it require another data types, like
+arrays or linked lists for example.
+
+Queues Task
+ -enqueue -> Adding a new elements into a queue
+ - dequeue - Removing
+ - peek - get the front value without removing
+ - size - returns number of elements in queue
+ - isEmpty -  returns true if no elements in queue
+
+
+--------------------------------------------HashTables -----------------------------------------
+When we use hashTables and why?
+    - Spell checkers - you can quickly lookup a word a month thousands of words less than a second
+    - Dictionaries - You can quickly lookup a word and find its translation
+    - Compilers - They use hash maps to quickly find the address of functions
+    - Code editors - Quickly lookup search items
+
+
+Binary Search = starting from middle and during searching time n/2 and n/2 etc. (n is length of data). Binary search is O(Log n)
+
+Implementation -> HashMap
+
+how does Hashing Work?
+    key (e.g. employeeNumber )-> value (e.g. employee)
+    Performance -> if we access directly to address than performance is following = insert O(1), Lookup O(1), Delete O(1)
+
+    Hash function will calculate the address of the Employee based on the Employee number.
+    Hash Function is deterministic, with the same input it will calculate the same address.
+    Hash Function is deterministic, with the same input it will calculate the same address, no changes.
+    When Algorithm calculates same address slot for different keys it is called -->  Collision.
+    Any Hash structure needs to handle the COLLISION. There are 2 ways -> chaining and open address
+    Problem is -> it will take some time to handle the COLLISION
+
+Linear Probing - increasing i value one by one. This is costly way.
+Quadratic Probing - increasing i value by 2.  This makes bigger jumps and it is faster.
+
+Implementation is HashMap (Internally array data structure is used);
+HashMap performance O(1) for add(), remove(), and contains().
+
+If we have performance issues we need to use HashMap. If we don't have performance issue than mayby treeMap better to use.
+
+
+Sets contains 2 implementations:
+    - HashSet, -> stores elements in a hash table. best performing implementation
+    - TreeSet, -> performance slower, but if order is important we can use it. Order is based on the values of elements
+    - LinkedHashSet -> Insertion order preserved.
+

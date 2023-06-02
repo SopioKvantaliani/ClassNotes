@@ -789,3 +789,521 @@
    The thread-safety of Spring beans depends on their scope and implementation.
    e.g Singleton which means that there is only one instance of the bean in the application context.
        Singleton beans are shared among multiple-threads and their thread safety is depends on their implementation.
+
+
+3. What is the Collections Framework?
+    - Collection in Java is a framework that provides an architecture to store and manipulate the group of objects.
+    - Java collections can achieve all the operations that you perform on a data such as searching, sorting,
+    insertion, manipulation, and deletion.
+    - Interfaces
+        =Set
+        =List
+        =Queue
+        =Deque
+    - Classes
+        =ArrayList
+        =Vector,
+        =LinkedList
+        =PriorityQueue
+        =HashSet
+        =LinkedHashSet
+        =TreeSet
+    - Advantage of Collection is: It reduces programming effort and increases performance
+
+4. Why do we need collection in Java?
+   Advantage of Collection is: It reduces programming effort and increases performance.
+
+5. What are the key interfaces defined in Java collection?
+   - Queue, List, Dequeue, Set
+
+6. When we need to use List, Set and Queue?
+   List = is an ordered collection of elements, we can access each elements using index. Insertion order of elements
+          is maintained; ArrayList and LinkedLIst classes are commonly used implementations of List interface
+          e.g sequence of tasks in a specific order.
+   Set = is a collection of unique elements. We use set if we want to enforce uniqueness of elements and when we don't
+         care about insertion order. HashSet and TreeSet classes are commonly implementations of Set interface;
+         e.g user IDs or email addresses.
+   Queues = is a collection of elements that supports adding elements at one end and removing elements from the other end.
+            We use Queues when we want to manage collection in FIFO order. ArrayDeque and LinkedList are commonly used
+            implementations of the queue interface.
+            e.g processing tasks in the order in which they were received.
+
+7. What is LinkedList? How it is different then Array List? What Interfaces LinkedList Implements?
+   LinkedList implements 2 interfaces = List and Queues.
+   The main difference between ArrayList and LinkedList is the way how they handel adding, accessing and removing
+   elements;
+     - Memory wise, LinkedList is more efficient, then ArrayList. e.g we need to add 1 element to an Arraylist with million
+   elements inside, we need to increase size by 50%. While in case of linked-list we can increase size by 1.
+    - when we remove element from ArrayList, after removing elements need to be shift and its expensive; while in
+      LinkedList we can just remove element and update neighboring nodes;
+    - Accessing elements in ArrayList can be directly done using index, which is O(1) operation, while in LInkedList
+
+8. What is the difference between add and set method of the List?
+    add method adds a new element to the end of the list or at a specified index,
+    while the set method replaces an existing element at a specified index with a new one.
+    e.g. list.add (element); or list.add(index, element);
+         list.set (index, element);
+
+9. Can you briefly explain the Set Interface?
+     Set is a collection of unique elements. We use set if we want to enforce uniqueness of elements and when we don't
+     care about insertion order. HashSet and TreeSet classes are commonly implementations of Set interface;
+      e.g user IDs or email addresses.
+
+10. What is the difference between Set and SortedSet interface?
+    Order: Set isn't sorted, SortedSet is sorted in order;
+    Operation: SortedSet provides additional operations to manipulate the order, like: first(), last(), headSet();
+               These operations aren't available in Set interface;
+    Implementations: SortedSet implements -> treeSet
+                     Set implements -> LinkedHashSet, HashSet, EnumSet;
+
+11. What are the difference between Set, List and Queue?
+    Set = No duplicates
+    List = Insertion order is preserved, allows duplicates
+    Queue = Returns elements First in First out.
+
+12. What are the core implementations classes of Set interface?
+    LinkedHashSet, TreeSet, HashSet
+
+13.What is HashSet?
+   It is a class that implements the Set interface;
+   Some key features of HasSet are:
+    - Uniqueness, allows no duplicates
+    - Null values, it is allowed
+    - The performance of the basic operations (add, remove and contains) is constant-time O(1)
+    - for the HashSet timeComplexity is O(1)
+
+14. Difference between LinkedHashSet and HashSet?
+
+    Order: HashSet - doesn't guarantee any particular order, it has random order, while
+           LinkedHashSet guarantees insertion order, without duplicates;
+    Implementation: = HashSet uses hashtable data structure to store the data, while LinkedHashSet uses both
+                       hash Table and linked list;
+
+15. Difference between HashSet and TreeSet?
+    Ordering: TreeSet stores elements in a sorted order, while HashSet does not guarantee any particular order;
+    HashSet = accepts null
+    TreeSet = doesn't accepts null
+
+16. Collection Interface important methods?
+    add (E e) - adds elements if it's not added
+    addAll(Collection <? extends E> c): adds all of the elements in the specified collection to this collection.
+    clear()
+    contains (object o)
+    isEmpty()
+    iterator();
+    remove(Object o)
+    size()
+    toArray() = returns Array
+
+17. What is Spring Boot?
+    Spring Boot is an open source framework, that provides a rapid application development environment.
+    Spring Boot includes features like auto-configuration, which automatically configures the application
+    based on the dependencies.
+    It also includes embedded servlet container, such as Tomcat or Jetty, which eliminates the need for
+    a separate configuration.
+
+18. What is Spring Initializr?
+    It is a web based tool, that provides an easy way to generate a new Spring Boot project with all
+    necessary dependencies and configurations.
+    Dependencies can be customized according to developer's needs.
+    Overall it simplifies the process of setting up and new Spring Boot project.
+
+19. How to run the spring boot application?
+    1. Build the project like Maven or Gradle.
+    2. Locate the executable file, which s typically a Jar file in the target directory
+    3. Run the application.
+    4. Verify the application is running. After running application we should see some output in the console
+        indicating that the application has started. After running we should be able to navigate to the URL
+        http://localhost:8080
+
+19.What are the differences between Spring and Spring Boot?
+   Spring and Spring Boot are both frameworks for Java Applications, but differences are goes and approach.
+   1. Configuration - Spring requires explicit configuration and Spring Boot provides automatic configuration
+   2. Dependencies - SpringBoot includes a set of opinionated dependencies that are commonly
+      used in Spring application - such as Spring Data, Spring Web, Spring Security.
+      Spring on the other hand requires manual configuration.
+   3.Embedded Server - Spring Boot includes Tomcat or Jetty, but Spring does not.
+   4.Complexity- Spring Boot is designed to reduce the complexity of Spring application by providing
+                 automatic configuration. Spring on the other hand has customized options.
+
+20. What is Spring Boot DevTools Used for?
+    1. Automatic Restart: Key feature is automatic restart, when a change is made to the app code, the application
+       is automatically restarted.
+    2. Live reload: also support live reload, which allows developers to see changes made to HTML, CSS files
+    3. Overall it increases productivity and is helpfully for developers.
+
+21. What are core annotations of SpringBoot?
+    @SpringBootApplication = main annotation to configure a spring boot
+    @Controller = marking class as controller
+    @Service
+    @RequestMapping - to map URL to a method in a controller class
+    @Autowired - to inject Dependencies.
+    @Component - marking class as a Spring Bean.
+
+22. What is @SpringBootApplication annotation?
+    It is a main annotation to configure a spring boot and includes: @Configuration,
+    @EnableAutoConfiguration, and @ComponentScan.
+
+23. What is Application Properties?
+     It is a simple text file named "application.properties" that is located in the "src/main/resources"
+     directory of the project.
+     1. To store API keys and other sensitive information, which can be accessed using syntax ${}
+     2. Server Port: to define the server port from where application should listen for incoming HTTP requests.
+     3. Security settings: Username/password properties.
+
+24. What is the difference between @configurationProperties and @Value?
+    @ConfigurationProperties is more powerful and flexible for injecting external
+    configurations into a Spring bean, as it provides type-safe binding and default values.
+    However, if you only need to inject a single property value, @Value may be more convenient.
+
+25. Can we change the port of the embedded Tomcat Server?
+    Yes, you can change the port of the embedded Tomcat Server in a Spring Boot
+    application by setting a property in your application.properties or application.yml file.
+
+    For example, if you want to change the port to 8081, you can add the following property
+    to your application.properties file: server.port = 8081
+
+26. What is starter parent?
+    In Spring Boot, starter parent is a special parent POM (Project Object Model) that provides
+    default configuration, dependencies, an plugins for Spring Boot app. It provides:
+    1. Default configuration
+    2. Default Dependencies
+    3. Dependency management
+
+27. Advantages of Spring Boot?
+    1. Easy to get started = We can run application with minimal configuration.
+    2. It provides features such as embedded servers, security checks, logging and monitoring
+    3. Spring Boot is build on top of Spring framework and integrates seamlessly with other spring projects,
+      such as Spring Data, Spring Security, Spring Cloud.
+    4. Community support.
+
+WEEK_11
+
+28. MVC Stands for?
+    Model, View, Controller. MVC is used for developing software applications. It divides app into 3 interconnected
+    components: the Model, the view and the controller.
+
+    Model: is responsible for managing the application's data and business logic, such as data validation,
+           database interactions and calculations. It represents the rules and information that govern the
+           behavior of the application.
+    View: is responsible for presenting the data to the user in a format that is easy to understand and interact
+           with. It includes user interfaces such as web pages, forms or graphical interfaces.
+    Controller: acts as a intermediary between the Model and the view. It receives view from the user and
+                updates the Model accordingly. It also takes care of updating the view with the latest data from
+                the Model.
+    MVC pattern: provides a separation of concerns, which makes it easier to maintain and extend the application.
+                 It allows developers to work simultaneously on different parts of application without
+                 interfering with each other. Additionally, MVC pattern promotes re-usability of code, as
+                 the components can be used in different app with minimum modification
+    Spring MVC: is web framework that implements the MVC pattern in Java-based web applications.
+                It helps developers to build maintainable, scalable app.
+
+29. What is Model in Spring?
+    In Spring MVC Model is represented by an interface called Model, which provides methods to add
+    remove and retrieve attributes from the model. A model object can be created in the controller
+    by returning a ModelAndView object, which contains both the model and the view name, or by using
+    the @ModelAttribute annotation on a method parameter.
+
+30. Can you explain controller method in Spring MVC?
+    A controller method is responsible for processing incoming requests from clients and returning a
+    response. It is a method within a controller class that is annotated with the @RequestMapping
+    annotation, which maps the method to a specific endpoint URL.
+    A method may have any name, but must have a return type and may have parameters. Return type can be
+    view name, a ModelAndView object, or an object to be converted to JSON or XML format using a message converter.
+
+31. Can you explain a simple flow in Spring MVC?
+    1. User send HTTP request to the server (Tomcat)
+    2. Tomcat get the HTTP request and calls Dispatcher Servlet or Front Controller.
+    3. Dispatcher Servlet is responsible for finding what controller action to call
+       for the request and what to send back in response to the client. Dispatcher servlet
+       delegates finding proper controller to a component names Handler Mapping.
+    4. Dispatcher Servlet calls specific controller action.
+    5. Controller performs the necessary processing and packs the response data in a model,
+        send Model and View name to Dispatcher Servlet.
+    6. DS delegates the responsibility of getting the view content to a component names view resolver.
+    7. DS returns the rendered view in the HTTP response.
+
+32. What is Dispatcher Servlet?
+    It is the central front controller in the Spring MVC web framework. DS is responsible for handling
+    many of the common tasks involved in processing HTTP requests, including:
+        - Parsing the request URL and identifying the appropriate controller method to handle the request;
+        - Extracting data from the request and passing it to the controller method.
+        - Managing the lifecycle of the web application context and other Spring components.
+        - Rendering the response by invoking the appropriate view resolver and view technology
+
+33. What is View Resolver?
+    It is a component in Spring MVC that is responsible to return correct view to the dispatcher servlet.
+     When controller method returns a modelAndView object, viewResolver uses view name to look up the appropriate view
+     implementation based on a set of configured rules.
+
+34. What is @RequestMapping?
+    @RequestMapping is a Spring annotation that is used define the URL path and the HTTP request method (GET, POST, PUT, DELETE etc)
+    that the controller can handle. It can be applied to class level, or method level in a container.
+
+35.  What is the difference between @RequestMapping and @GetMapping?
+    @RequestMapping is generic, we can use it with GET, POST, PUT and any other request methods, using the method attribute on the annotation
+    while,
+    @GetMapping is specific to the GET request method. It just improve clarity and is easy to read the code.
+
+36. What is @PathVariable?
+    It is responsible to bind URL value to the method variable and retrieve data into the database.
+    We pass @PathVariable as a method parameter.
+
+37. What is @RequestParam?
+    It is used to indicate that a method parameter should be bound to a URL template variable.
+    Structure is different, we pass value as key -> value;
+    A request parameter is mandatory by default. If the client does not provide a value for the request
+    parameter, the server sends back a response with the status HTTP 400 Bad Request.
+
+38.  How is server-side validation done using Spring MVC?
+     The Spring MVC validation is used to restrict the input provided by the user.
+     The Spring uses Bean Validation API to validate the user's input (sprint-boot-starter-validation dependency).
+     The Validation API is a Java specification that is used to apply constraints on DTO via annotations in javax.validation.constraints.
+
+39. What is BindingResult?
+    BindingResult is an interface that represents binding results of form data. It is used together with
+    @ModelAttribute to perform validation of form data submitted by the user.
+    When a form is submitted, Spring MVC will try to bind the form data to a model object using @ModelAttribute.
+    If there are any validation errors, Binding Result will capture those errors and allow the controller to handle them appropriately.
+
+40. What is @modelAttribute?
+    @ModelAttribute can be used either as a method parameter or at the method level.
+    When used as a method argument, it indicates the argument should be retrieved from the model.
+    Spring MVC does this behind the scenes before invoking the submit method.
+    At the method argument level @ModelAttribute might be used to customize the name of the attribute.
+
+    When it is used at the method level, it shows the method adds an attribute to all models defined in the controller class.
+    Spring MVC will always make a call first to that method before it calls any request handler methods.
+    @ModelAttribute method are invoked before the controller methods  are annotated with @RequestMapping.
+
+41. How do you set the default date format with Spring?
+    @DateTimeFormat tag can be used for the date fields in the Entity or DTO classes.
+
+42. Explain what is Thymeleaf and how to use Thymeleaf?
+    Thymeleaf: provides a good support serving an HTML5 in web application.
+                   To integrate Thymeleaf with Spring Boot, we need to add: spring-boot-starter-thymeleaf.
+                   To convert HTML to Thymeleaf, we need to add attribute, xmlns: th="http://thymelead.org"
+                   When we put this link, that means we bring thymeleaf library from online.
+    Thymeleaf is a java-based library used to create a web application. To able to integrate Thymeleaf with Spring Boot, we need to add
+    the "spring-boot-starter-thymeleaf" dependency.
+           - We need to use Template Engine and pass the variable to html
+            - Thymeleaf is most famous template engine, because its end point is html.
+
+
+43.  Explain the difference between Spring Boot, Spring MVC, and Spring?
+       Spring: The core spring framework provides a foundation for developing enterprise-level applications.
+                  It provides wide range of features and services, including dependency injection, data access, security,
+                  and web development.
+      Spring MVC: Spring MVC is a web application framework, that is built on top of the Spring Framework.
+                 MVC stand for Model -View-Controller.  Spring MVC is designed to simplify the development of web applications.
+
+       Spring Boot: It is framework for building microservices and standalone applications.
+                  It is also built on top of Spring Framework and provides a streamlined development experience by reducing boilerplate
+                  codes and provides ready configuration. It includes embedded server and a range of ready dependency configurations
+                  which makes it easy to start the application.
+
+
+
+-------------------------------SPRING---------------------------------
+1. Can you give a big picture of the Spring?
+    Spring came into being in 2003 as a response to the complexity of job in Development;
+    1st component of SPRING was IoC container.
+    We refer to Spring as a framework, but it is much more complex, like an ecosystem.
+    Spring's ecosystem includes: Spring data, Spring Security, Spring Cloud, Spring Boot.
+
+    Advantages:
+       - Simplified development;
+       - Scalability. Can easily handle large applications
+       - Testability - easier to write automated tests for applications, resulting in faster development cycles and more reliable software.
+       - Flexibility - it is flexible and can be used with various programming languages, frameworks and tools.
+       - Security
+       - Community Support
+2. What are important Spring Modules?
+    - Spring Core (IoC) - It is fundamental feature of Spring, including dependency injection, bean lifecycle management,
+      and inversion of control;
+    - Spring Boot - It provides easy way to create application with minimal configuration. Includes features such as auto-configuration,
+        embedded servers.
+    Spring MVC - It provide Model-View-Controller framework for building web applications. It includes features such as
+        requestMapping, view resolution, and support for various web technologies.
+    Spring Data - It provides model for data access in Spring -based applications.
+    Spring Security - It provides a security framework for Spring -based app. It includes features such as authentication, authorization,
+        and support for various security mechanisms.
+    Spring Cloud - It provides tools for building and deploying microservices-based applications. It includes features such
+      as service discovery, load balancing and circuit breaking.
+3. why is Spring popular?
+    There are several reasons:
+        1. Modularity: It is  a modular framework, which means developers can use only the modules they need and leave out the rest.
+        2. Dependency Injection: Simplifies coding part and coding amount.
+        3. Integration with other frameworks: It integrates with other popular frameworks such as Hibernate, Struts, and JSF.
+        4. Open-source
+        5. Strong Community
+
+4. What is coupling?
+    Coupling refers to the degree of interdependence between two or more components (class, interface, method, module etc) in a software system.
+    It is a measure of how closely one component depends on another component to perform its function.
+          There are 2 types of coupling = Tight and Loose coupling
+
+5. What is IoC?
+    With IoC the control is inverted and the framework or container controls the flow of the program by creating and managing the components
+      calling their methods.
+      In the context of the Spring framework, IoC is achieved using dependency injection (DI). DI is a design pattern
+      that allows objects to be loosely coupled by injecting their dependencies
+
+6. What are the advantages of IoC container?
+    Loose coupling;
+    Reliability;
+    Testability;
+    Configurability
+    Scalability
+    Consistency
+
+7. What are the important roles of an IOC Container?
+   They are:
+    - Dependency Injection
+    - Configuration Management - Spring IoC container can be used to configure components in a system by specifying their properties,
+        behaviors, and dependencies. This configuration is typically stored in XML files, Java Annotations or java-based configuration classes.
+    - Object Creation and management:IoC creates and manages lifecycle of objects in a system. It can create objects on demand.
+    - Scope Management
+
+8. What is bean?
+Spring Bean is simply Java object. A bean is an object that is created and managed by Spring Container.
+Spring beans are created from POJOs.
+
+9. What are the types of IoC container in Spring? Please explain them briefly.
+    1. BeanFactory:  The BeanFactory is lightweight and suitable for small to medium-sized applications. The
+                    objects are initialized lazily, which means they are created only when they are requested.
+    2. ApplicationContext:
+        provides all the functionality of the BeanFactory and adds additional features such as internationalization,
+        resource handling;
+
+
+14. How did you learn Spring Boot?
+    - First I learned Spring Core -> IoC, DI
+    - Then I learned MVC - Model, View, Controller
+    - The I leaned Spring Data - Hibernate (ORM), JPA, Repository (Derived, JPQL, Native Query)
+    - Spring Security Subject  - create Authorization (login), create Authentication (different users, role access, what you
+                                 are going to do in this application); We learned fundamentals of Security.
+    - Spring API
+    - Spring Security
+    - Spring AOP
+    - Spring Testing
+
+     - DevOps
+     - MicroService
+
+
+-------------------------------------------Maven----------------------------------
+1. What is Maven?
+        Maven is an open-source build management tool developed by Apache Software Foundation. We use Maven for creating
+        projects, managing dependencies, building and testing software, and deploying application via Project
+        Object Model (POM) and plugins.
+
+2. What is meant by the term ‘Build Tool’?
+    Some commonly used build tools in the Spring ecosystem include:
+        1. Apache Maven: Maven
+        2. Gradle
+   Build tools in Spring are used to perform tasks such as managing dependencies,
+   compiling source code, running tests, creating executable JAR (Java Archive) files,
+   and deploying applications to different environments.
+
+3. What are the main features of Maven?
+   - Dependency Management
+   - Build Lifecycle management (such as compile, test, package, install, and deploy)
+   - Convention over Configuration = Maven uses conventions and best practices to simplify the build
+                                     process.
+   -  Customization with plugins = There are many plugins available for Maven, including plugins for code
+                                   coverage, static analysis, and deployment.
+    - Model Based builds = Maven is able to build any number of projects into predefined output types
+                           such as a JAR, WAR.
+   -  Integration with IDEs=  Maven integrates with popular Java IDEs such as Eclipse, IntelliJ IDEA, and
+      NetBeans. This allows developers to manage dependencies and build their projects from within the
+      IDE.
+
+4. How does Maven work?
+   Maven architecture works in three steps, which are as follows:
+     -> The first step is to read the
+         pom.xml file.
+     -> Then, it downloads the
+        dependencies defined in pom.xml
+        into the local repository from the
+        central repository.
+     ->  Finally, it builds and generates a
+         report based on the
+         requirements, as well as handles
+         life cycles, phases, goals, plugins,
+         and other tasks
+
+5. What is POM?
+   POM stands for Project Object Model.
+   It includes information about the project's name, version, packaging type, and dependencies. In addition
+   to the basic project information, the POM file can also define plugins that provide additional functionality
+   during the build process.
+   The POM file is located in the root directory of the project and has a standard name of "pom.xml".
+   When we run a Maven command, such as "mvn compile" or "mvn package," Maven reads the POM file to
+   determine the project's configuration and dependencies, and then executes the appropriate build phases
+   and plugins.
+
+6.  What does POM contain?
+        • Project Information: This includes the project's name, description, version, and packaging type
+        (JAR, WAR, etc.).
+        • Project Dependencies
+        • Build Configuration: This section includes the build configuration settings such as the source and
+        output directories, plugins, and goals.
+        • Plugin Configuration: This section contains the configuration for each plugin used in the project.
+        • Project Repositories: This section lists the repositories used for dependency resolution and
+        deployment.
+        • Project Profiles: Profiles allow you to customize the build process for different environments or
+        situations. They can include additional dependencies, plugins, and configuration settings.
+        • Parent POM: This section allows a project to inherit configuration and settings from a parent POM
+
+7.What are the different types of Maven repositories?
+    - Local Repository _ Developer's device
+    - Central Repository - The maven community has built the central Maven repository
+    - Remote Repository - Maven may download dependencies from a remote repository hosted on a web server.
+
+8. What is Maven Build Lifecycle?
+    Each lifecycle consists of a series of phases, which represents a specific stage of the build process.
+    The Maven build lifecycle consists of three built-in lifecycles:
+        1) Clean - removes all generated files and artifacts created during the previous build
+        2) Default - handles the project compilation, test and deployment. It compiles the source code, runs
+           tests, and generates output artifacts such as JAR files or WAR files.
+        3) Site -  It handles the creation of our project's web site. This phase also generates documentation and
+                  reports that provide useful information about the project, such as project status, code quality, and
+                  test coverage.
+9. What are the main build phases in default lifecycle?
+    validate = validates the project is correct
+    compile = compile the source code of the project
+    test = test the compiled source code using a suitable unit testing framework.
+    package = take the compiled code and package in its distributable format, such as
+              jar, war, ear.
+    verify = run any checks on results of integration tests to ensure quality criteria are met.
+    install = install the package into the local repository, for use as a dependency in other projects locally.
+    deploy = done in the build environment, copies the final package to the remote repository for sharing with
+             other developers and projects.
+
+
+10. What is Maven Artifact?
+    In Maven, an artifact is a packaged, distributable unit of software that is produced by the build process.
+    An artifact can be a JAR, a WAR, a ZIP file, or any other file format that can be deployed or installed.
+
+11. What are Maven plugins used for?
+        Plugins are commonly used in various software frameworks and platforms to add custom functionality,
+        tailor the software to specific requirements, or extend its capabilities beyond the base functionality
+        provided by the core system. Plugins can be developed by the original software authors or by third-party developers,
+        and they can be distributed and shared among users to enhance their software experience.
+
+        Plugins can be included in a project's POM file and can be executed at different phases of the build
+        lifecycle. For example, the Maven Compiler plugin is used to compile source code into bytecode during the
+        compile phase, while the Maven Surefire plugin is used to run tests during the test phase.
+
+12. What is Archetype?
+    An archetype is a template or blueprint that provides a starting point for creating a new project.
+    Archetypes define the structure and configuration of a project, including the project's directory structure,
+    build configuration, dependencies, and other settings.
+
+13. How do we check if the expressions are balanced with the opening and closing delimiters in Stack ?
+    If opening and closing symbols are balanced and if they match other one the expression is balanced.
+            e.g. (A+B)+(C-D) -> Balanced
+                  ((A+B)+(C-D) -> Not Balanced
+
+

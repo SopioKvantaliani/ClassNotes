@@ -1,0 +1,80 @@
+
+
+-----------------------------------------------Trees------------------------------------------------
+
+Terminology:
+    Root - starting point of tree.
+    Leaf - node that has no child.
+    Siblings - if node has the same parent
+    ancestors - parent of node
+    Edges - links between nodes
+
+    Height  - count of edges from root to leaf
+    Depth - count of edges from bottom leaf to the root (opposite to height)
+
+Binary Tree - is a tree where each node has zero child, one child or two children. Empty tree is also a valid binary tree.
+Generic Binary Tree - Root -> Left Subtree -> Right Subtree;
+
+Types of Binary Trees:
+    1) Strict Binary Tree -> Each node has exactly 2 children or no children.
+    2) Full Binary Tree -> Each node has exactly two children and all leaf nodes are at the same level.
+    3) Complete Binary Tree -> Every level except the last is completely filled and levels are complete from left to right.
+
+The number of leaf nodes in a full binary trees is 2^height
+
+Binary search tree is a tree I can make Binary Search = Left side should be less amount than root. Left side < Root < Right Side = Binary Tree Formula
+How to build Binary Search Tree?
+    - Starting point is Root;
+    - Left side < Root
+    - Right side > Root
+
+Performance of Operations on Binary Trees:
+    - Lookup O (log n)
+    - insert O (log n)
+    - delete O (log n)
+
+Traversing Trees
+2 main types of Traversals:
+    1) Breadth First - Level by level order
+    2) Depth First -> for each sub-tree
+         - Pre-Order -> Root, Left, Right = 1. Visit Root, 2. Pre order Traversal (left), 3. Pre order Traversal (right)
+         - In-order ->  Left, Root, Right
+         - Post-order-> Left, Right, Root
+
+Deletion
+    Deletion from a Binary Search Tree - One Child
+    Case1:   No Child
+    Case2:   One Child
+    Case3:   Two Children (if we want to delete root, we'll take min. from right subtrees or max from left subtrees)
+
+
+Balanced and Unbalanced Trees
+
+What is imbalanced?
+    - if height difference is greater than 1 between right and left side.
+    - Balance Factor: |height (left) - height(right)|<= 1 then balanced
+
+AVL tree  = is a self-balancing Binary Search Tree (BST) where the difference between heights of left and right subtrees
+            cannot be more than one for all nodes;
+
+Balancing Trees:
+    - If there is imbalance we make rotations to balance a tree.
+    - We check balance after every insertion/deletion.
+    - It should be a valid BST after any balancing operation.
+    - There may be 4 cases and 4 kinds of rotation:
+        = Left Rotation - if we have imbalance to the right, we need to shift it to the left and rotate.
+        = Right Rotation - if we have imbalance to the left, we need to shift it to the right and rotate.
+        = Left-Right Rotation - firsts left and than right
+        = Right-Left-Rotation
+
+B Trees
+    - B-tree is a self-balancing tree
+    - It maintains sorted data and allows searches, sequential access, insertions and deletions in logarithmic time.
+    - It allows for nodes with more than two children.
+    - It is commonly used in databases and file systems.
+
+What is the structure of B Tree?
+    - Key 1 value -> Key 2 Value
+    - More than 2 children, called clusters. There is a connection between clusters, as in linkedList;
+    - B Tree structure is so fast.
+    - Assume that  we have about 1 million records. We will need 20 comparisons roughly, which is good performance indicator.

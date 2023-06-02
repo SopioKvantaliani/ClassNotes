@@ -1,0 +1,24 @@
+
+Remove Git from a project
+    1. Come to project -> right click -> open in finder
+    2. Select whenever project we want to delete from git
+    3. shift+command+ dot . -> show hidden files
+    4. Select doc.git folder and delete
+    5. click preferences -> version control -> Directory Mappings and remove git folder.
+
+Fork a project:
+    Forking means a way to get a copy for myself on my remote repository. I can make any changes in the copy and it won't affect
+    the original file.
+    1. open project and find fork button on the right side
+    2. click and create copy of the project. It will be your local and won't gonna affect the original file.
+
+Git Branching strategy:
+    1. Master Branch - main branch of the codebase that contains the production ready code.
+    2. Develop Branch - is used as a staging area for changes that are not yet production-ready. When a new feature or bug fix is
+                        added to the codebase, it is first merged into the develop branch.
+    3. Feature branches  - are used to develop new features or make changes to existing functionality in isolation from the main codebase.
+                           Each feature or bug fix is developed on its own feature branch and then merged back into the develop
+                           branch once it is complete.
+
+Rebase
+    Similar to merging, but it handles the commits differently, rearranges the order of commits.

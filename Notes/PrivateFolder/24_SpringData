@@ -1,0 +1,200 @@
+Spring Review
+
+Spring Core -> Component 1
+    - IoC - if spring creates beans, how we make relationship between them?
+    - DI  - DI does injection.
+
+Spring MVC (Model - View - Controller) -> Component 2
+        - Thymeleaf
+
+ ----------------------------------------  Spring Data - Component 3 ---------------------------------------
+  ------------------------------------------------CONFIGURATION -----------------------------------------------
+   JDBC - Java DataBase Connectivity. It is provided by JDK. JDBC is a library.
+          Since we don't know what dataBase you are choosing, we give you Abstract Layer with JDBC. Everything is coming with
+          Interfaces.
+   JDBC Driver - Whatever dataBase we are working (Postgres, Oracle ect), you need to include driver in the application and it is called
+                 JDBC Driver.
+   Data Source - Connection pool (CP).
+                  It is Essential component that Spring App needs so it can access a database.
+                  It provides the app with connections when it requested and makes sure to create new connections only when it is
+                  necessary.
+                  Spring is coming with HIKARI CP. It is considered default Data Source
+                  Hikari CP holds reference to the connection and whenever you need the same connection, Hikari CP provides again,
+                  you as a developer don't need to worry about.
+    Spring (jdbc) Template - it simplifies the use of JDBC and helps to avoid common errors.
+                             It executes core JDBC workflow, leaving application code to provide SQL and extract results.
+                             We need to add dependency to any Spring project to use Spring
+                             JDBC provided templates.
+    ORM Framework (Hibernate) - Hibernate is one of the ORM framework.
+                                This ORM is built on top of the Spring Template. It is responsible for mapping.
+    JPA  -   it is kind of rules. It is interface, Hibernate is implementation.
+             it give some standards for your ORM framework.
+    JPA = > Java Persistence API
+    DAO Pattern (Data Access Object) - > inside is Service a SQL Statements / Inside the Dao Pattern we save business logic connected to DB
+
+    Spring Data JPA - is one of the project inside Spring BOOT. It replaced DAO Patter with Repository.
+                      When Spring Data JPA it means we have Spring (JDBC) Template -> ORM Framework (Hibernate) and
+                      plus new repository level.
+
+    Final Design:
+                                    save (dto)
+            APP ---> Controller ---> Service
+                                        |
+                                        | ------------------------>Repository --------------> DB
+                                        v
+                                     Service IML
+                                (Convert DTO to entity)
+                                Save(entity)
+
+
+JDBC is library, kind of interface -> JDBC Driver is kind of  Implementation, we need to include
+
+1. To Create to database we need URL, Username and Password
+2. Dependency for the new project:
+        -PostgresSQL Driver;
+        - Spring Data JPA
+        - Lombok
+        - H2 Database
+        - Spring Web
+3. data.sql & schema.sql under resources are reserved words in java. In schema.sql we create our table, in data.sql we lot data to table
+    when we execute application these two files run first.
+4. Two ways to create tables: 1) direct create sql files or 2) we can create tables through classes, we convert class into table
+
+5. What is advantage using Repository?
+    1. Ready Methods (25 Methods)
+    2. Query Builder Mechanism  - Query structure is given by Spring
+
+        ----------------------------------------  Spring Data ---------------------------------------
+  ------------------------------------------------Table Creation -----------------------------------------------
+
+1.  Whatever we create a class in the entity  - > is gonna be created as a table in DB
+    And whatever object we create from any class, its gonna be saved as a data in the DB.
+
+2. In the tables = > Columns mean fields of the class, row means objects.
+
+3. @Entity = Behind the scene creates table in DB
+   @ID = Defines Primary Key
+   @GeneratedValue = Postgres creates ID behind the scene
+   @Column(name = "studentLastName") = change the column name annotation
+   @MappedSuperclass = annotation means it provides inheritance relationship to other child classes
+   @Enumerated(EnumType.STRING) = Enum constant will be Female/Male as a String.
+   @Transient = when you don't want to show the column in the table, just you create, but you don't show as a table column.
+   @Column(columnDefinition = "DATE") = when we work on date/time in the entity we need to add this definition.
+
+
+          ----------------------------------------  Spring Data ---------------------------------------
+    ------------------------------------------------Repository-----------------------------------------------
+1. Repository is Interface - > Extended CrudRepository -> extended PagingAndSortingRepository -> JPARepository
+    1.1 CrudRepository = Create, Read, Update, Delete operations
+    1.2 PagingAndSortingRepository = findAll(Sort), findAll(Pageable)
+    1.3 JPARepository  = flushing the persistence context and deleting records in a batch. Because of interface it also contains all the methods
+                         from 1st and 2nd interface.
+
+2. public interface Repository <T, ID> {} - T is class type and ID unique Id;
+
+3. Annotations:
+    - @Entity
+    - @MappedSuperclass
+    - @Id
+    - @GeneratedValue
+    - @Enumerated
+    - @Transient
+    - @Table (name = "newName")
+
+
+        ----------------------------------------  Spring Data  ---------------------------------------
+  ------------------------------------------------Table Relationship-----------------------------------------------
+
+1. Spring wants to know what kind of relationship is between tables (Tables - > objects)
+  Object Relationships:
+        - One to One - > @OneToOne means eg. one payment only can have one payment detail information;
+        - One to Many - @OneToMany means e.g one object has number of another objects. eg. customer has many payments.
+        - Many to One - e.g merchant and payment. one merchant might have different payments;
+        - Many to Many - e.g items on cart. different items might be on different carts.
+2. cascade = {CascadeType.Persist, CascadeType.Merge}
+    - Persist = > means save
+    - Remove = > Delete
+    - All = > means all the actions
+    - Merge = >
+    - Detach = >
+
+2.   ByDirectional - if we want to have ByDirectional connection we need to put object relationship in both object class.
+     UniDirectional
+
+3. ORM  - > Object Relational Mapping is a technique used in creating a bridge between object oriented programs and in most cases relational
+            databases.
+
+4. Fetching Types:
+        Lazy: Fetch when needed
+        Eager: Fetch Immediately
+
+        @OneToOne (mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+        @OneToOne (MappedBy = "user", fetch = FetchType.Eager, cascade = CascadeType.ALL)
+
+Default Fetch Types:
+    @OneToOne = FetchType.EAGER
+    @OneToMany = FetchType.LAZY
+    @ManyToOne = FetchType.EAGER
+    @ManyToMany = FetchType.LAZY
+
+5. We always put @Many annotation on the many side. e.g. ticket -> user. We put Many to Ticket's side and relation will be @ManyToOne
+
+6. what does "flywaydb" dependency do?
+    It creates 3rd table and tracks all the changes there. It is like Git and helps developers to track all the changes in DB.
+
+            ----------------------------------------  Spring Data  ---------------------------------------
+      ------------------------------------------------Queries-----------------------------------------------
+
+1. When JPA does not have specific structure to write business logic, we need to build our own structure.
+To build whatever business logic we need we can build in 3 different way:
+    1. Derived Queries : Method
+    2. JPQl = Java Persistence Query Language
+    3. Native Query
+
+2. SpringBoot has Query Builder mechanism behind the scene and it is capable of interpreting a query method name and converting it into an
+SQL statement. We need to follow naming conventions of this mechanism (e.g. find represents select, by represents where from sql language)
+    Example: findByFirstname (String name); Select * From Student Where FirstName = name;
+              findBySalary(Integer salary); Select * From Student Where Salary = salary;
+    Using Derived Queries sometimes are too long and we need better structure. Alternatively we can use JPQL
+    Select = find / read / get (all of them same as select)
+
+3. JPQL
+     - We don't care methodName, it can be anything;
+     - @Query annotation in the method level and in parenthesis we write ("Select e From Employee e Where e.email = 'amcnee1@google.es')
+        Employee is class and e represents objects from Employee class. It can be any name;
+        If we want to see only one field we should write e.salary From Employee.
+
+        Employee getEmployeeDetail (); //method name can be any name;
+4. Two ways to parameterized (Completely on developers choice which one you want to use)
+    1) Positional Parameters -> ? is to define parameter + position (defines to assign which parameter)
+                                 @Query ("Select e from Employee e where e.email = ?1 and e.salary = ?2")
+                                 Employee getEmployedByEmail(String email, int salary) -> 1st parameter email, 2nd parameter salary
+    2) Named Parameters = ": XName" & in the method parameter we need to add @Param("XName") to catch the value;
+
+
+5. Native Query
+        @Query annotation
+        (value = "---sql language code")
+        nativeQuery= true
+
+------------------------------------------------------------------------------------
+
+1. What's the benefit between Native Query and JPQL?
+
+
+2. Sql injection definition?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
